@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>学习用Github建立个人博客的流程记录</title>
+    <link href="/2023/11/05/workflow/LearnToStartABlog2/"/>
+    <url>/2023/11/05/workflow/LearnToStartABlog2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="1、安装git"><a href="#1、安装git" class="headerlink" title="1、安装git"></a>1、安装git</h4><p>下载网址：git-scm.com</p><p>完成后鼠标右键可见Git Bash Here. 点击打开后，测试是否安装成功：</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git <span class="hljs-comment">--version</span><br></code></pre></td></tr></table></figure><h4 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h4><p>下载网址：nodejs.org&#x2F;en&#x2F;download&#x2F;</p><p>测试是否安装成功：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git -v</span><br></code></pre></td></tr></table></figure><h4 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h4><p>安装：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> hexo -g<br></code></pre></td></tr></table></figure><p>测试是否安装成功：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo -v</span><br></code></pre></td></tr></table></figure><h4 id="4、安装Hexo依赖"><a href="#4、安装Hexo依赖" class="headerlink" title="4、安装Hexo依赖"></a>4、安装Hexo依赖</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-deployer-git</span><br></code></pre></td></tr></table></figure><h4 id="5、配置SSH-key"><a href="#5、配置SSH-key" class="headerlink" title="5、配置SSH key"></a>5、配置SSH key</h4><p>生成ssh key：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;github账号绑定的邮件地址&quot;</span><br></code></pre></td></tr></table></figure><p>在电脑用户文件夹下可以看到生成.ssh文件夹。在.ssh文件夹下，复制id_rsa.pub文件里的所有内容。</p><p>打开github主页，在settings中选择SSH and GPG keys，点击右侧New SSH key，将复制内容粘贴，取好Title后add SSH key.</p><p>测试是否成功：</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@github</span>.com<br></code></pre></td></tr></table></figure><p>配置用户名和邮箱：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;github用户名&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;github注册邮箱&quot;</span><br></code></pre></td></tr></table></figure><h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><h4 id="1、初始框架"><a href="#1、初始框架" class="headerlink" title="1、初始框架"></a>1、初始框架</h4><p>hexo基本命令：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span> <span class="hljs-meta">#新建网站</span><br>hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;title&quot;</span> <span class="hljs-meta">#新建文章</span><br>hexo <span class="hljs-keyword">new</span> page <span class="hljs-string">&quot;pagename&quot;</span> <span class="hljs-meta">#新建页面</span><br>hexo g<br>hexo generate <span class="hljs-meta">#生成静态文件至public目录</span><br>hexo s<br>hexo sever <span class="hljs-meta">#预览</span><br>hexo d<br>hexo deploy <span class="hljs-meta">#将网站部署到github</span><br>hexo clean <span class="hljs-meta">#清除缓存和已生成的静态文件（public）</span><br></code></pre></td></tr></table></figure><p>在本地保存博客的目录，进入Git命令，输入：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure><p>目录会出现多个文件和文件夹。</p><p>_config.yml：为网站的配置信息，在此配置网站的参数。</p><p>scaffolds：为模板文件夹。当新建文章时，Hexo会根据 scaffold来创建文件。</p><p>source：存放用户资源的文件夹。</p><p>themes：主题文件夹，Hexo根据主题生成静态页面。</p><p>生成静态网页：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure><p>预览：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure><h4 id="2、将网站部署到github"><a href="#2、将网站部署到github" class="headerlink" title="2、将网站部署到github"></a>2、将网站部署到github</h4><p>在github上点击新建：new repository</p><p>仓库名称：用户名.github.io</p><p>选中 Add a README file，点击 Create repository</p><p>编辑本地目录中的_config.yml：</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repository:</span> git@github.com: username/username.github.io<br><span class="hljs-symbol">  branch:</span> main<br></code></pre></td></tr></table></figure><p>branch需要看自己的github repository是master还是main.</p><p>在git中命令部署：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure><p>访问自己的网站：username.github.io</p><h3 id="主题与内容"><a href="#主题与内容" class="headerlink" title="主题与内容"></a>主题与内容</h3><p>接下来就是寻找适合自己的网站主题：<a href="https://hexo.io/themes/">https://hexo.io/themes/</a></p><p>支持中文、持续更新的主题往往使用起来更加趁手。</p><p>我们同样可以在这个网站上寻找合适的插件：<a href="https://hexo.io/plugins/">https://hexo.io/plugins/</a></p><p>对我而言有用的插件包括嵌入视频网站视频，嵌入音乐播放器等。</p><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p><p><a href="https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169">https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>记录、教程与分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>姑且算编程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>学习用Github搭建个人博客的流程记录</title>
     <link href="/2023/11/05/workflow/LearnToStartABlog/"/>
     <url>/2023/11/05/workflow/LearnToStartABlog/</url>
@@ -30,8 +55,8 @@
   
   <entry>
     <title>动物森友会 2</title>
-    <link href="/2023/10/31/game/nintendo/AnimalCrossing2/"/>
-    <url>/2023/10/31/game/nintendo/AnimalCrossing2/</url>
+    <link href="/2023/10/31/game/nintendo/AnimalCrossing/AnimalCrossing2/"/>
+    <url>/2023/10/31/game/nintendo/AnimalCrossing/AnimalCrossing2/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=535254729&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -41,6 +66,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>动物森友会</category>
       
     </categories>
     
@@ -61,8 +88,8 @@
   
   <entry>
     <title>马里奥惊奇 好玩3号</title>
-    <link href="/2023/10/31/game/nintendo/MarioWonder3/"/>
-    <url>/2023/10/31/game/nintendo/MarioWonder3/</url>
+    <link href="/2023/10/31/game/nintendo/mario/MarioWonder3/"/>
+    <url>/2023/10/31/game/nintendo/mario/MarioWonder3/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=662779083&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -72,6 +99,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>Mario</category>
       
     </categories>
     
@@ -92,8 +121,8 @@
   
   <entry>
     <title>马里奥惊奇 好玩2号</title>
-    <link href="/2023/10/22/game/nintendo/MarioWonder2/"/>
-    <url>/2023/10/22/game/nintendo/MarioWonder2/</url>
+    <link href="/2023/10/22/game/nintendo/mario/MarioWonder2/"/>
+    <url>/2023/10/22/game/nintendo/mario/MarioWonder2/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=277496620&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -103,6 +132,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>Mario</category>
       
     </categories>
     
@@ -123,8 +154,8 @@
   
   <entry>
     <title>马里奥惊奇 好玩1号</title>
-    <link href="/2023/10/19/game/nintendo/MarioWonder1/"/>
-    <url>/2023/10/19/game/nintendo/MarioWonder1/</url>
+    <link href="/2023/10/19/game/nintendo/mario/MarioWonder1/"/>
+    <url>/2023/10/19/game/nintendo/mario/MarioWonder1/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=492468091&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -134,6 +165,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>Mario</category>
       
     </categories>
     
@@ -154,8 +187,8 @@
   
   <entry>
     <title>星露谷物语 通关纪念 3</title>
-    <link href="/2023/09/02/game/pc/StardewValley3/"/>
-    <url>/2023/09/02/game/pc/StardewValley3/</url>
+    <link href="/2023/09/02/game/pc/StardewValley/StardewValley3/"/>
+    <url>/2023/09/02/game/pc/StardewValley/StardewValley3/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=575530107&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -165,6 +198,8 @@
       <category>游戏</category>
       
       <category>pc</category>
+      
+      <category>星露谷物语</category>
       
     </categories>
     
@@ -185,8 +220,8 @@
   
   <entry>
     <title>星露谷物语 通关纪念 2</title>
-    <link href="/2023/09/01/game/pc/StardewValley2/"/>
-    <url>/2023/09/01/game/pc/StardewValley2/</url>
+    <link href="/2023/09/01/game/pc/StardewValley/StardewValley2/"/>
+    <url>/2023/09/01/game/pc/StardewValley/StardewValley2/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=618065206&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -196,6 +231,8 @@
       <category>游戏</category>
       
       <category>pc</category>
+      
+      <category>星露谷物语</category>
       
     </categories>
     
@@ -216,8 +253,8 @@
   
   <entry>
     <title>塞尔达传说：王国之泪 竞选吧主第三集</title>
-    <link href="/2023/07/22/game/nintendo/totk3/"/>
-    <url>/2023/07/22/game/nintendo/totk3/</url>
+    <link href="/2023/07/22/game/nintendo/zelda/totk3/"/>
+    <url>/2023/07/22/game/nintendo/zelda/totk3/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=403756684&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -227,6 +264,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>塞尔达传说</category>
       
     </categories>
     
@@ -247,8 +286,8 @@
   
   <entry>
     <title>塞尔达传说：王国之泪 竞选吧主第二集</title>
-    <link href="/2023/06/12/game/nintendo/totk2/"/>
-    <url>/2023/06/12/game/nintendo/totk2/</url>
+    <link href="/2023/06/12/game/nintendo/zelda/totk2/"/>
+    <url>/2023/06/12/game/nintendo/zelda/totk2/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=657240666&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -258,6 +297,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>塞尔达传说</category>
       
     </categories>
     
@@ -278,8 +319,8 @@
   
   <entry>
     <title>塞尔达传说：王国之泪 竞选吧主第一集</title>
-    <link href="/2023/05/30/game/nintendo/totk1/"/>
-    <url>/2023/05/30/game/nintendo/totk1/</url>
+    <link href="/2023/05/30/game/nintendo/zelda/totk1/"/>
+    <url>/2023/05/30/game/nintendo/zelda/totk1/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=911651384&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -289,6 +330,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>塞尔达传说</category>
       
     </categories>
     
@@ -309,8 +352,8 @@
   
   <entry>
     <title>星露谷物语 通关纪念 1</title>
-    <link href="/2023/04/23/game/pc/StardewValley1/"/>
-    <url>/2023/04/23/game/pc/StardewValley1/</url>
+    <link href="/2023/04/23/game/pc/StardewValley/StardewValley1/"/>
+    <url>/2023/04/23/game/pc/StardewValley/StardewValley1/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=485290933&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -320,6 +363,8 @@
       <category>游戏</category>
       
       <category>pc</category>
+      
+      <category>星露谷物语</category>
       
     </categories>
     
@@ -369,8 +414,8 @@
   
   <entry>
     <title>splatoon3 4</title>
-    <link href="/2023/01/28/game/nintendo/splatoon3_4/"/>
-    <url>/2023/01/28/game/nintendo/splatoon3_4/</url>
+    <link href="/2023/01/28/game/nintendo/splatoon/splatoon3_4/"/>
+    <url>/2023/01/28/game/nintendo/splatoon/splatoon3_4/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=478378958&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -380,6 +425,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>splatoon</category>
       
     </categories>
     
@@ -400,8 +447,8 @@
   
   <entry>
     <title>splatoon3 3</title>
-    <link href="/2023/01/07/game/nintendo/splatoon3_3/"/>
-    <url>/2023/01/07/game/nintendo/splatoon3_3/</url>
+    <link href="/2023/01/07/game/nintendo/splatoon/splatoon3_3/"/>
+    <url>/2023/01/07/game/nintendo/splatoon/splatoon3_3/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=307389151&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -411,6 +458,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>splatoon</category>
       
     </categories>
     
@@ -431,8 +480,8 @@
   
   <entry>
     <title>splatoon3 2</title>
-    <link href="/2023/01/06/game/nintendo/splatoon3_2/"/>
-    <url>/2023/01/06/game/nintendo/splatoon3_2/</url>
+    <link href="/2023/01/06/game/nintendo/splatoon/splatoon3_2/"/>
+    <url>/2023/01/06/game/nintendo/splatoon/splatoon3_2/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=519952799&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -442,6 +491,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>splatoon</category>
       
     </categories>
     
@@ -462,8 +513,8 @@
   
   <entry>
     <title>动物森友会 1</title>
-    <link href="/2023/01/06/game/nintendo/AnimalCrossing1/"/>
-    <url>/2023/01/06/game/nintendo/AnimalCrossing1/</url>
+    <link href="/2023/01/06/game/nintendo/AnimalCrossing/AnimalCrossing1/"/>
+    <url>/2023/01/06/game/nintendo/AnimalCrossing/AnimalCrossing1/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=564903262&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -473,6 +524,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>动物森友会</category>
       
     </categories>
     
@@ -493,8 +546,8 @@
   
   <entry>
     <title>splatoon3 1</title>
-    <link href="/2022/10/03/game/nintendo/splatoon3_1/"/>
-    <url>/2022/10/03/game/nintendo/splatoon3_1/</url>
+    <link href="/2022/10/03/game/nintendo/splatoon/splatoon3_1/"/>
+    <url>/2022/10/03/game/nintendo/splatoon/splatoon3_1/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=561208021&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -504,6 +557,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>splatoon</category>
       
     </categories>
     
@@ -524,8 +579,8 @@
   
   <entry>
     <title>塞尔达传说：旷野之息 记录</title>
-    <link href="/2022/02/08/game/nintendo/botw/"/>
-    <url>/2022/02/08/game/nintendo/botw/</url>
+    <link href="/2022/02/08/game/nintendo/zelda/botw/"/>
+    <url>/2022/02/08/game/nintendo/zelda/botw/</url>
     
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=723971057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
@@ -535,6 +590,8 @@
       <category>游戏</category>
       
       <category>nintendo</category>
+      
+      <category>塞尔达传说</category>
       
     </categories>
     
@@ -558,7 +615,7 @@
     <link href="/2020/10/20/fiction/NotHappy/lose/"/>
     <url>/2020/10/20/fiction/NotHappy/lose/</url>
     
-    <content type="html"><![CDATA[<p>她被闹钟叫醒时，突然觉得很不对劲。</p><p>但她并不知道是什么地方出了差错，于是她还是保持醒来的姿势躺在床上，看着天花板上霉菌染出的褐色斑点。闹钟仍在响，不知疲倦地发出单调的声音，阻隔着窗外的光与楼下儿童嬉闹的响声。</p><p>没有什么是不正常的，她是这么想的。</p><p>于是她坐起身来，觉得脑袋轻轻的，像是什么东西被抽走了。她伸出手制止了敬业的闹钟，另一只手按住了自己脖子的右侧。</p><p>动脉血管在皮肤下一板一眼地鼓动，她还活着。她只能用这样拙劣的方式判断这最简单不过的问题。对她而言，手下感受到的永远比看到的真实。毫无疑问，她没有任何问题，她的大脑依旧正常的运作，她的手脚依旧受她驱动。</p><p>她却感到无比的沉重，因为这恰恰表明，问题出在表面。</p><p>她一眼瞥见了床头的黑色皮圈。</p><p>今天是把头发扎起来还是披肩呢？</p><p>她最终决定把头发扎成简单的马尾。她对自己做出这样的决定感到非常满意。于是她得意地将手向后伸，用虎口拢了一下头发。</p><p>但她什么都没有摸到，手在空中划过一道出人意料的弧度。</p><p>她的脸色突然变得很难看，她没有再试图用手触摸本该属于头发的空间。她的人生信条陡然一转，此刻她不得不相信，看到的永远比手下感受到的真实。</p><p>她冲进卫生间，毫不意外，当她的视线颤抖地移向那片区域时，她没有看到黑色，没有一丝黑色留存过的痕迹。此刻的一切是额头的延伸，是脸的连展。</p><p>她盯着镜子看了好久，看自己的身体，看自己的五官，没有樱桃小嘴，没有高挺的鼻梁，没有灵动的大眼，它的样貌是这么的普通，却这么的协调。她唯独失去的头发，却让一切的普通都归于虚无。</p><p>她失去了所有。</p><p>她一直看着，在沉默着的空间中突然发出了歇斯底里的尖叫，像是被网围困住的鸟。她只叫了五秒钟，就瘫痪般的坐在了马桶盖上。她不愿相信，只能垂着头，瞪大惊骇的双眼，像邻临死刑的犯人。她保持着这样的神色缓缓地抬起了头，看着那面镜子。</p><p>什么都没有改变。她又突然把头垂得很低，一直到膝盖上，用手抱住头。她的指尖颤抖地触摸着她光滑的皮肤，从头顶，一直到额头。她惊恐地发现她甚至不知道什么区域本应该属于头发，她在脑内混乱的搜索着，想把关于头发的所以信息全部从陈旧的储物室里拉出来。</p><p>已经完全的失去了。</p><p>她这么想着，又突然冲回床上，把被子掀翻在地，把枕头丢在一边。什么都没有，连一根头发也没有。干净得过分的床单，击碎了所有希望。</p><p>她颓丧地拉起了地上的被子。</p><p>面试，她还要应聘面试。</p><p>她的脑中没有考虑到未来的生活这种很遥远的事情，此刻，她只清楚地意识到，她的面试将充满危机。这次危机足以把之前付出的所有努力都毁灭殆尽。</p><p>她抬头看了眼电子闹钟，恪尽职守的闹钟，没有因为主人的绝望而放慢它的脚步，此刻正精准的显示着时间与日期。</p><p>离面试的日子还有一个星期多两小时。</p><p>也许一切都会好起来的，她这么想着，下意识地擦了擦干燥的眼睛。</p><p>两天后，她从网络上订下的假发到了。拆开来，是黑色长发。</p><p>确实非常真实，不管是手感还是质量，都与真发几无差异，但她还是感觉到什么东西假得可怕，什么东西一直在背地里欺骗着她。</p><p>她还是带上了假发。回到镜子前，她居然有些不适应，她从未发现原来头发可以这么好看，她从未发现原来人是这么的需要头发。她满意地转了转身，又摆弄了一下她的“黑色长发”。这才是我本来的样子，她想着。随后，她扣上一顶鸭舌帽，出了门。</p><p>店里弥漫着令人作呕的气味，但她还是踏了进来。店老板是个头发浓密的人，他百无聊赖的坐在收银台前，摆弄着手里的手机。看到有客人，他也没起身招呼的打算，他就这么坐着，看着带着鸭舌帽的女人在店里随意乱晃。店外，高音喇叭声嘶力竭地喊着广告词，店内却一片清冷。</p><p>“你要买给谁啊。”店老板翘着二郎腿问。</p><p>“我妈。”她说。</p><p>“哪个地方秃了，是这里，这里，还是这里。”店老板用手在自己头上笔画着，一边发出毫无缘由的笑声。</p><p>她随便胡诌了两句，东西就买下来了。</p><p>临走时，那个店老板突然说：“你妈这么早就这样了，你可也要小心点啊。到时候要记得来我的店啊。”然后又突然发出了毫无缘由的笑声。而她只感觉脊背发凉，飞速逃离了高音喇叭的呼喊。</p><p>五天后，面试的日子。这天早晨，她按下了喋喋不休的闹钟后，双手就马上试探性的向头摸去。没有，还是什么都没有。装成给母亲买的生发膏没有一点用处，哪怕只是一点，一点头发都没有。按照她最乐观的设想，只要长出来一些，就可以勉强向面试官解释清楚她的问题。但她的头依旧倔强的保持着光滑。</p><p>她也非常清楚自己不能带假发去面试，她先前与公司经理见过，那时她还是棕色的短发。</p><p>已经没有可以拯救的办法了。</p><p>一切都已经无法挽回。她坐在床上，双手捂住眼睛，有水珠滴落在棉被上。像一场梦，梦里，她失去了她的头发，她哭，她大吵，她不甘，她拼命的挽回。等到一梦醒来，她还是她，一个完整的她，一个自信的她。她痴痴地想着，又用手按住了她脖颈上的动脉，要是没有跳动，该是多好。但她还是感觉到了和闹钟一样敬职敬业鼓动的动脉血管。</p><p>假的，都是假的。</p><p>然后她绝望。她无神地穿上了衣服。她心不在焉地打点好一切。她赴死一般的前往了面试的公司。</p><p>公司的大厅里，排起了长队，看起来面试的人很多。队伍前面的人一个一个进去了，不过半晌就出来了。所有人神色平静，但都在偷偷观察着众多的竞争对手。大厅里很安静，她却巴不得在这里装一个小店门口的高分贝喇叭，好让在场的所有人都感受一下她受过的羞耻。</p><p>她想着，顺着队伍慢慢往前挪步。她敏感地注意到队伍中的一个男人一直在观察着前来的应聘者，他似乎对自己很有自信，肆无忌惮地直接观察着每一个人。她有些厌恶，到他的目光切换到她身上。他只停留了几秒，表情冷淡，就重新寻找下一个人了。</p><p>他都没发现我失去了我的头发吗？她有些奇怪。也许是带了鸭舌帽的缘故吧。</p><p>队伍缓缓前进，转眼就到她了。</p><p>她走进去，三张桌子，一把椅子。桌子前坐着应该是公司高管，最右边坐的是她认识的总经理。她坐在了椅子上，看着三个高管，她的眼睛偷偷瞥向总经理，发现他的眉头皱了一下。</p><p>噩梦要开始了。</p><p>她一动不动，盯着白色墙壁上的一个油墨点，等待着宣判的声音。</p><p>其中一人小声地对总经理说：“这个人为什么要带着鸭舌帽？”</p><p>她听见了，于是把鸭舌帽摘下了，她等待着震惊的声音。</p><p>但没有，只有其中一人咳了咳，让她做自我介绍。</p><p>他们就没有发现吗？她失去了头发的事情。</p><p>她结结巴巴地自我介绍完，就被另一个人赶了出去“这样的货色还想来我们公司上班。”</p><p>她毫不意外地径直回了家。</p><p>那场应聘面试中，没有人被选上。于是在两天后，公司决定举行第二轮的应聘面试。就在当天晚上，她家的门铃响起，她从猫眼里向外看，意外地看到了总经理穿着卡其色的便装站在门口。她犹豫了一下，开了门。</p><p>“你那天是怎么回事？”他一进门就说。</p><p>“对不起，可是，你都看见了，我已经变成这样了。”此时她什么都没戴，头顶裸露在空气中，像是什么滑稽的符号。</p><p>“什么变成什么样？不好好的吗？压力不要太大啊。”总经理有些诧异的看着她。</p><p>“什么？”她有些吃惊。</p><p>“明天有第二次的面试，这应该是你最后一次的机会了。”总经理说，还拿出了一张纸。</p><p>“照着这个背，保证没有问题。”</p><p>随后，他很走进她的房间，把包随意一扔。</p><p>“过来吧。”总经理说。她突然想起了某种令人作呕的气味。</p><p>她沉默了一会儿，整张脸都阴沉下来，她突然说：“出去。”</p><p>“什么？”</p><p>“出去。”</p><p>总经理的眼神变得越发诧异，但他还是提着他的包，狼狈的走了。</p><p>她重重地关上了房门，像从未这么畅快过一样长舒了一口气。也许早就应该这么做了。她突然得意洋洋起来，为自己做的举动感到满意。</p><p>她像个疯子一样大笑起来，一不小心摔坏了闹钟，但她没有收拾它的打算，而是把长长的黑色假发拿过来一根根扯断。扯到一半，她突然没了兴趣，又把头靠在膝盖上哭。像个小丑一样自导自演的一场戏，终于该收场了，她想。</p><p>最后，她收拾了一下假发，生发膏和那些乱七八糟的东西，把它们全都扔到了垃圾袋里。垃圾袋一下就变得鼓鼓囊囊的，像是装满了许多丑陋与罪恶。</p><p>她终于知道了是什么在欺骗她。没关系，就算她成了自己世界中最令人厌恶的那个人，在别人眼中，她依然是那个完美的她。她像个女王一样提着垃圾袋出了门，把所以东西一并扔入了不可回收的那个大桶中。</p><p>今夜一夜好梦。</p><p>第二早晨，她自然而醒。闹钟还瘫在掉满黑色假发的地板上，挣扎着亮起微光。她没有在意。</p><p>这是一个美好的早晨，没有闹钟的单调声音，没有楼下儿童喧嚣的声响，没有谁家装修的刺耳声。太好了，完美的早晨。除了天花板上的褐色霉菌斑点，一切都很完美的早晨。她向后伸展着双手，活动了一下一晚上都沉寂着的身体。</p><p>最后，她照理按了按自己的脖子，真实地活着。她下了一成不变的结论。然后她下了床，什么都是正常的。她走向卫生间，开了灯，黄色的灯光映了满堂的光影。</p><p>她走进去，看着镜子里的自己。</p><p>是自己，但好像多了什么。</p><p>多了头发！她的嘴做出将要惊叫的态势，却没有发出任何声音。她的膝盖慢慢弯曲向下，但她没有坐在马桶盖上，而是蜷缩着蹲在地上。她紧咬着嘴唇，却还是不可避免的让嘴角露出久违的微笑。她用手抚上自己头发的发根，又站起来，看着镜子里自己的头发，它的出现仿佛遮蔽了她对她身体其他部分的注视，此刻她的目光只聚焦在头顶那一片黑色的地方。她以前从未如此珍视过的地方。她两只手都插入头发，肆意地抚顺它们，又把它们弄乱。</p><p>简直难以置信，她终于可以与他人一样，看到自己的头发了。她几乎是心怀感激的交握住了自己的双手。她从不信神，但这一刻，她居然有种朦胧的启示感。可能是什么在磨砺她的人生，她想。</p><p>她相信，一定是昨天她的刚毅与果敢换来了她眼中的头发。此刻，她距她上一次的正常模样隔了整整十天，她自己都不敢相信，这十天里自己是多么的疯狂，多么的可怕。</p><p>一切都已经结束了，她的梦醒了。</p><p>她穿戴好衣服，画了妆。是时候去赴一场盛宴了，她想。</p><p>照例是长长的队伍，长长的时间。大家大多已经互相打量过，大多数人的目光不再是游离于众人，他们或埋首于书册，或拿着手机看着什么。唯有她，所有人都再重新打量了她一遍，她甚至听到前面还有人发出嗤嗤的笑声。而先前那个肆无忌惮的男人，此刻用一种她看不懂的目光直直的盯着她。</p><p>她皱起了眉。真是没有素质，她想。她从包里掏出镜子，自顾自地观察着自己的外貌。</p><p>很快就是她了。她站在门口，想着她的自我介绍，她觉得，这一次她一定可以成功的。</p><p>她走了进去，端庄地坐在椅子前，却看见了三个负责人惊讶的目光。她甚至都因此而感到有些惊讶了。今天的人们是怎么了？她深埋着这个疑问。但她还是镇定而精彩的完成了她的面试。</p><p>走前，她看到总经理还是一副难以置信的表情，真是搞不懂啊。不过，她和他，已经再也没关系了，她微笑着，高傲地走了。</p><p>下午，公司发来短信接受她的应聘申请。</p><p>理所当然。</p><p>她这么想着，一直到第二天去了公司。</p><p>“你真的很有魅力，恭喜你成为公司的一员。”她到公司后，其中一个负责人这么跟她说。</p><p>“对不起，第一次看你面试的时候说了不好的话，没想到变成这样之后居然更加开朗了。”另一个人这么跟她说。</p><p>她向后拢了拢头发，明明还是一样的触感。</p><p>两位负责人带着她去了她的岗位。那里，她的新同事在看了她一眼后没有继续冷漠地处理公务，相反，他们交头接耳，都抬起头来看她，所有人的目光里是清一色的惊诧。</p><p>她明白问题在哪了。</p><p>原来没有什么是真实的啊。她这么想着，却还是拿出镜子照了一下自己的脸。</p>]]></content>
+    <content type="html"><![CDATA[<p>她被闹钟叫醒时，突然觉得很不对劲。</p><p>但她并不知道是什么地方出了差错，于是她还是保持醒来的姿势躺在床上，看着天花板上霉菌染出的褐色斑点。闹钟仍在响，不知疲倦地发出单调的声音，阻隔着窗外的光与楼下儿童嬉闹的响声。</p><p>没有什么是不正常的，她是这么想的。</p><p>于是她坐起身来，觉得脑袋轻轻的，像是什么东西被抽走了。她伸出手制止了敬业的闹钟，另一只手按住了自己脖子的右侧。</p><p>动脉血管在皮肤下一板一眼地鼓动，她还活着。她只能用这样拙劣的方式判断这最简单不过的问题。对她而言，手下感受到的永远比看到的真实。毫无疑问，她没有任何问题，她的大脑依旧正常的运作，她的手脚依旧受她驱动。</p><p>她却感到无比的沉重，因为这恰恰表明，问题出在表面。</p><p>她一眼瞥见了床头的黑色皮圈。</p><p>今天是把头发扎起来还是披肩呢？</p><p>她最终决定把头发扎成简单的马尾。她对自己做出这样的决定感到非常满意。于是她得意地将手向后伸，用虎口拢了一下头发。</p><p>但她什么都没有摸到，手在空中划过一道出人意料的弧度。</p><p>她的脸色突然变得很难看，她没有再试图用手触摸本该属于头发的空间。她的人生信条陡然一转，此刻她不得不相信，看到的永远比手下感受到的真实。</p><p>她冲进卫生间，毫不意外，当她的视线颤抖地移向那片区域时，她没有看到黑色，没有一丝黑色留存过的痕迹。此刻的一切是额头的延伸，是脸的连展。</p><p>她盯着镜子看了好久，看自己的身体，看自己的五官，没有樱桃小嘴，没有高挺的鼻梁，没有灵动的大眼，它的样貌是这么的普通，却这么的协调。她唯独失去的头发，却让一切的普通都归于虚无。</p><p>她失去了所有。</p><p>她一直看着，在沉默着的空间中突然发出了歇斯底里的尖叫，像是被网围困住的鸟。她只叫了五秒钟，就瘫痪般的坐在了马桶盖上。她不愿相信，只能垂着头，瞪大惊骇的双眼，像邻临死刑的犯人。她保持着这样的神色缓缓地抬起了头，看着那面镜子。</p><p>什么都没有改变。她又突然把头垂得很低，一直到膝盖上，用手抱住头。她的指尖颤抖地触摸着她光滑的皮肤，从头顶，一直到额头。她惊恐地发现她甚至不知道什么区域本应该属于头发，她在脑内混乱的搜索着，想把关于头发的所以信息全部从陈旧的储物室里拉出来。</p><p>已经完全的失去了。</p><p>她这么想着，又突然冲回床上，把被子掀翻在地，把枕头丢在一边。什么都没有，连一根头发也没有。干净得过分的床单，击碎了所有希望。</p><p>她颓丧地拉起了地上的被子。</p><p>面试，她还要应聘面试。</p><p>她的脑中没有考虑到未来的生活这种很遥远的事情，此刻，她只清楚地意识到，她的面试将充满危机。这次危机足以把之前付出的所有努力都毁灭殆尽。</p><p>她抬头看了眼电子闹钟，恪尽职守的闹钟，没有因为主人的绝望而放慢它的脚步，此刻正精准的显示着时间与日期。</p><p>离面试的日子还有一个星期多两小时。</p><p>也许一切都会好起来的，她这么想着，下意识地擦了擦干燥的眼睛。</p><p> ——</p><p>两天后，她从网络上订下的假发到了。拆开来，是黑色长发。</p><p>确实非常真实，不管是手感还是质量，都与真发几无差异，但她还是感觉到什么东西假得可怕，什么东西一直在背地里欺骗着她。</p><p>她还是带上了假发。回到镜子前，她居然有些不适应，她从未发现原来头发可以这么好看，她从未发现原来人是这么的需要头发。她满意地转了转身，又摆弄了一下她的“黑色长发”。这才是我本来的样子，她想着。随后，她扣上一顶鸭舌帽，出了门。</p><p> ——</p><p>店里弥漫着令人作呕的气味，但她还是踏了进来。店老板是个头发浓密的人，他百无聊赖的坐在收银台前，摆弄着手里的手机。看到有客人，他也没起身招呼的打算，他就这么坐着，看着带着鸭舌帽的女人在店里随意乱晃。店外，高音喇叭声嘶力竭地喊着广告词，店内却一片清冷。</p><p>“你要买给谁啊。”店老板翘着二郎腿问。</p><p>“我妈。”她说。</p><p>“哪个地方秃了，是这里，这里，还是这里。”店老板用手在自己头上笔画着，一边发出毫无缘由的笑声。</p><p>她随便胡诌了两句，东西就买下来了。</p><p>临走时，那个店老板突然说：“你妈这么早就这样了，你可也要小心点啊。到时候要记得来我的店啊。”然后又突然发出了毫无缘由的笑声。而她只感觉脊背发凉，飞速逃离了高音喇叭的呼喊。</p><p> ——</p><p>五天后，面试的日子。这天早晨，她按下了喋喋不休的闹钟后，双手就马上试探性的向头摸去。没有，还是什么都没有。装成给母亲买的生发膏没有一点用处，哪怕只是一点，一点头发都没有。按照她最乐观的设想，只要长出来一些，就可以勉强向面试官解释清楚她的问题。但她的头依旧倔强的保持着光滑。</p><p>她也非常清楚自己不能带假发去面试，她先前与公司经理见过，那时她还是棕色的短发。</p><p>已经没有可以拯救的办法了。</p><p>一切都已经无法挽回。她坐在床上，双手捂住眼睛，有水珠滴落在棉被上。像一场梦，梦里，她失去了她的头发，她哭，她大吵，她不甘，她拼命的挽回。等到一梦醒来，她还是她，一个完整的她，一个自信的她。她痴痴地想着，又用手按住了她脖颈上的动脉，要是没有跳动，该是多好。但她还是感觉到了和闹钟一样敬职敬业鼓动的动脉血管。</p><p>假的，都是假的。</p><p>然后她绝望。她无神地穿上了衣服。她心不在焉地打点好一切。她赴死一般的前往了面试的公司。</p><p> ——</p><p>公司的大厅里，排起了长队，看起来面试的人很多。队伍前面的人一个一个进去了，不过半晌就出来了。所有人神色平静，但都在偷偷观察着众多的竞争对手。大厅里很安静，她却巴不得在这里装一个小店门口的高分贝喇叭，好让在场的所有人都感受一下她受过的羞耻。</p><p>她想着，顺着队伍慢慢往前挪步。她敏感地注意到队伍中的一个男人一直在观察着前来的应聘者，他似乎对自己很有自信，肆无忌惮地直接观察着每一个人。她有些厌恶，到他的目光切换到她身上。他只停留了几秒，表情冷淡，就重新寻找下一个人了。</p><p>他都没发现我失去了我的头发吗？她有些奇怪。也许是带了鸭舌帽的缘故吧。</p><p>队伍缓缓前进，转眼就到她了。</p><p>她走进去，三张桌子，一把椅子。桌子前坐着应该是公司高管，最右边坐的是她认识的总经理。她坐在了椅子上，看着三个高管，她的眼睛偷偷瞥向总经理，发现他的眉头皱了一下。</p><p>噩梦要开始了。</p><p>她一动不动，盯着白色墙壁上的一个油墨点，等待着宣判的声音。</p><p>其中一人小声地对总经理说：“这个人为什么要带着鸭舌帽？”</p><p>她听见了，于是把鸭舌帽摘下了，她等待着震惊的声音。</p><p>但没有，只有其中一人咳了咳，让她做自我介绍。</p><p>他们就没有发现吗？她失去了头发的事情。</p><p>她结结巴巴地自我介绍完，就被另一个人赶了出去“这样的货色还想来我们公司上班。”</p><p>她毫不意外地径直回了家。</p><p> ——</p><p>那场应聘面试中，没有人被选上。于是在两天后，公司决定举行第二轮的应聘面试。就在当天晚上，她家的门铃响起，她从猫眼里向外看，意外地看到了总经理穿着卡其色的便装站在门口。她犹豫了一下，开了门。</p><p>“你那天是怎么回事？”他一进门就说。</p><p>“对不起，可是，你都看见了，我已经变成这样了。”此时她什么都没戴，头顶裸露在空气中，像是什么滑稽的符号。</p><p>“什么变成什么样？不好好的吗？压力不要太大啊。”总经理有些诧异的看着她。</p><p>“什么？”她有些吃惊。</p><p>“明天有第二次的面试，这应该是你最后一次的机会了。”总经理说，还拿出了一张纸。</p><p>“照着这个背，保证没有问题。”</p><p>随后，他很走进她的房间，把包随意一扔。</p><p>“过来吧。”总经理说。她突然想起了某种令人作呕的气味。</p><p>她沉默了一会儿，整张脸都阴沉下来，她突然说：“出去。”</p><p>“什么？”</p><p>“出去。”</p><p>总经理的眼神变得越发诧异，但他还是提着他的包，狼狈的走了。</p><p>她重重地关上了房门，像从未这么畅快过一样长舒了一口气。也许早就应该这么做了。她突然得意洋洋起来，为自己做的举动感到满意。</p><p>她像个疯子一样大笑起来，一不小心摔坏了闹钟，但她没有收拾它的打算，而是把长长的黑色假发拿过来一根根扯断。扯到一半，她突然没了兴趣，又把头靠在膝盖上哭。像个小丑一样自导自演的一场戏，终于该收场了，她想。</p><p>最后，她收拾了一下假发，生发膏和那些乱七八糟的东西，把它们全都扔到了垃圾袋里。垃圾袋一下就变得鼓鼓囊囊的，像是装满了许多丑陋与罪恶。</p><p>她终于知道了是什么在欺骗她。没关系，就算她成了自己世界中最令人厌恶的那个人，在别人眼中，她依然是那个完美的她。她像个女王一样提着垃圾袋出了门，把所以东西一并扔入了不可回收的那个大桶中。</p><p>今夜一夜好梦。</p><p>第二早晨，她自然而醒。闹钟还瘫在掉满黑色假发的地板上，挣扎着亮起微光。她没有在意。</p><p>这是一个美好的早晨，没有闹钟的单调声音，没有楼下儿童喧嚣的声响，没有谁家装修的刺耳声。太好了，完美的早晨。除了天花板上的褐色霉菌斑点，一切都很完美的早晨。她向后伸展着双手，活动了一下一晚上都沉寂着的身体。</p><p>最后，她照理按了按自己的脖子，真实地活着。她下了一成不变的结论。然后她下了床，什么都是正常的。她走向卫生间，开了灯，黄色的灯光映了满堂的光影。</p><p>她走进去，看着镜子里的自己。</p><p>是自己，但好像多了什么。</p><p>多了头发！她的嘴做出将要惊叫的态势，却没有发出任何声音。她的膝盖慢慢弯曲向下，但她没有坐在马桶盖上，而是蜷缩着蹲在地上。她紧咬着嘴唇，却还是不可避免的让嘴角露出久违的微笑。她用手抚上自己头发的发根，又站起来，看着镜子里自己的头发，它的出现仿佛遮蔽了她对她身体其他部分的注视，此刻她的目光只聚焦在头顶那一片黑色的地方。她以前从未如此珍视过的地方。她两只手都插入头发，肆意地抚顺它们，又把它们弄乱。</p><p>简直难以置信，她终于可以与他人一样，看到自己的头发了。她几乎是心怀感激的交握住了自己的双手。她从不信神，但这一刻，她居然有种朦胧的启示感。可能是什么在磨砺她的人生，她想。</p><p>她相信，一定是昨天她的刚毅与果敢换来了她眼中的头发。此刻，她距她上一次的正常模样隔了整整十天，她自己都不敢相信，这十天里自己是多么的疯狂，多么的可怕。</p><p>一切都已经结束了，她的梦醒了。</p><p>她穿戴好衣服，画了妆。是时候去赴一场盛宴了，她想。</p><p>照例是长长的队伍，长长的时间。大家大多已经互相打量过，大多数人的目光不再是游离于众人，他们或埋首于书册，或拿着手机看着什么。唯有她，所有人都再重新打量了她一遍，她甚至听到前面还有人发出嗤嗤的笑声。而先前那个肆无忌惮的男人，此刻用一种她看不懂的目光直直的盯着她。</p><p>她皱起了眉。真是没有素质，她想。她从包里掏出镜子，自顾自地观察着自己的外貌。</p><p>很快就是她了。她站在门口，想着她的自我介绍，她觉得，这一次她一定可以成功的。</p><p>她走了进去，端庄地坐在椅子前，却看见了三个负责人惊讶的目光。她甚至都因此而感到有些惊讶了。今天的人们是怎么了？她深埋着这个疑问。但她还是镇定而精彩的完成了她的面试。</p><p>走前，她看到总经理还是一副难以置信的表情，真是搞不懂啊。不过，她和他，已经再也没关系了，她微笑着，高傲地走了。</p><p>下午，公司发来短信接受她的应聘申请。</p><p>理所当然。</p><p>她这么想着，一直到第二天去了公司。</p><p>“你真的很有魅力，恭喜你成为公司的一员。”她到公司后，其中一个负责人这么跟她说。</p><p>“对不起，第一次看你面试的时候说了不好的话，没想到变成这样之后居然更加开朗了。”另一个人这么跟她说。</p><p>她向后拢了拢头发，明明还是一样的触感。</p><p>两位负责人带着她去了她的岗位。那里，她的新同事在看了她一眼后没有继续冷漠地处理公务，相反，他们交头接耳，都抬起头来看她，所有人的目光里是清一色的惊诧。</p><p>她明白问题在哪了。</p><p>原来没有什么是真实的啊。她这么想着，却还是拿出镜子照了一下自己的脸。</p>]]></content>
     
     
     <categories>
@@ -595,8 +652,6 @@
       <category>小说</category>
       
       <category>开心小说</category>
-      
-      <category>光兆传奇</category>
       
     </categories>
     
@@ -674,7 +729,7 @@
     <link href="/2020/03/12/fiction/happy/HaiTangKouXian/"/>
     <url>/2020/03/12/fiction/happy/HaiTangKouXian/</url>
     
-    <content type="html"><![CDATA[<h4 id="一"><a href="#一" class="headerlink" title="一"></a>一</h4><p>她常做这样的梦。</p><p>年轻的女孩飞扬恣意，乌发随性飘散，笑容轻盈明快，驱着枣红的爱马超过身前的父亲母亲，头也不回，一直飞奔向草色碧黄的山丘。在天地交际处，她又兀的停下，失了笑脸，只是看着前方那片映天的绿和广袤沧然的永恒。没有人跟上来。只有一个拿着胡琴的少年慢慢自远处破旧的毡房走来，没有恭敬地称她“公主”，却也疏离地站在她几步开外。</p><p>她总在这时惊醒，起身点烛，不觉泪已落了几回。</p><p>做了梦后她便再睡不着，只能从榻上起身，在这偌大冰冷的海棠宫中坐待天明。</p><p>“可我究竟又在待着何物？”她喃喃着，换上素色宽袖襦裙，又被冰冷的衣物刺得哆嗦。那是宫里上好的锦缎，绣纹繁复细腻，勾勒出夸张富丽的海棠图案，却在凄苦甚于寒夜者心上凋零枯萎。无人知，她只喜轻衣长靴，清风列列；无人晓，她只盼弃了亭榭，马踏万野。</p><p>——草香没，熏香起，</p><p>胡琴声寂，管弦音靡，</p><p>何处且将旧事忆？</p><p>——唯梦而已。</p><h4 id="二"><a href="#二" class="headerlink" title="二"></a>二</h4><p>——“你想杀掉宏容竹吗？”</p><p>——“不。”</p><p>她该恨他的。她该恨他让父亲被迫弃了她和亲，她该恨他最终又毁约出兵荆国，她被囚于深宫的境地皆由他起，她如何可以不恨他？她读史，读过无数“和亲”与“战争”，而唯真实卷涉其间，成为又一段历史，才明白所谓政治之考量、军事之博弈，都不及压垮她的历史灰尘——那些史书不屑记载的寻常爱恨与生死，所有自以为能够长久的天真烂漫与悄然滋长的情愫，她赖以生存的当下与早已许下的未来。</p><p>只是，谁可曾知，那个名叫宏容竹的一国之君亦如是。</p><p>自入宫起她便听闻，帝后故剑情深，鸾凤和鸣，乃天作之合。她也曾亲见，皇上挽过棠央的手，将摘下的红色芍药放在她的手心，再为她拂去散乱的发丝。他的人生近乎完美，纵然青年有颠沛在外的时日，也得棠央一心照顾相守，遑论如今江山在手，爱人在侧，又是何等常人连艳羡都不敢的境地。</p><p>她生于快意的草原，不藏己心已成习惯。然居于深宫数月，她却已学会不在旁人前流露出半分哀落，唯夜深独自对镜，才能看见自己眼底无处倾泻的悲思。只是她确实未尝想到，她竟也能在宏容竹眼中看到她再熟悉不过的空落，这种不知该将视线投向何处，才能望见旧人的徒劳之悲。她自此始觉这世界兜转千回，何人不尝有所遗憾。</p><p>直到那日，那个不请自来的黑衣男子向她递出了荆国虎符。</p><p>她在父亲那儿见过这枚象征着军事权力的虎符——伏虎状的青铜兵符刻着荆国古老的文字，是她从未想过要从亡父手中传承的权力与战争。他告诉她，荆国尚有两万兵力。他告诉她，她的父亲希望她能复国。他告诉她，她是族人唯一的希望。</p><p>压迫窒息感鲜明异常，在那几无思量余地的时刻，她却想起见到宏容竹那般表情时，他笔下的那幅画，一位没有五官的女子——一袭青衫，青丝散漫，周身是干净温婉的气息，不似宫中任何一个施粉黛的妃子。而在其后，她又想起自己梦见过的那个少年——曾笑容温和、小心翼翼地扶她上马，却终在长久不散的血腥气中倒下，碎了满地的胡琴弦音。</p><p>而她最终只是痛苦地闭上了眼，轻声道：“好。”</p><h4 id="三"><a href="#三" class="headerlink" title="三"></a>三</h4><p>光兆八年冬，除夕夜，皇宫角楼。</p><p>她心思散漫地想着过去的事，想起几年前的夏夜，宏容竹于亭中作画，对她道：“朕问你，你可曾，喜欢过什么人？”当时她没有作答，任那个拿着胡琴的少年朦胧在时间的雾里，只克制着自己，唯恐自己一朝点起烛火照向雾的彼端，却终烧了早已枯草遍生的心。</p><p>只是现在，宏容竹再不会露出那般的表情了，而她却仍困在过去的梦魇里，被桎梏于现世的枷锁中，惶惶不得脱。自由早已成为虚妄的符号，一如策马飞奔向的草原尽头，终会在路上失了方向。只是她不明白，究竟何者才是束缚？是权力富贵出身相貌爱情这种种，还是它们所施以自身的重负，抑或是，追求逍遥随性的自我本身。或许唯已至此境地，才能幡然醒悟——既知自己将永远被拘于深宫，便再无所念想，却因此无知觉的成了他人的牵线傀儡，真正地失了自我。</p><p>此刻思量这些似乎已毫无意义，她却极细致地开始回想自己这一生所有的细枝末节，从胡琴弦声落入一派寂寥，自广袤草原辗转深宫朱墙，从国运盛极走向家破人亡。</p><p>高楼上，清瘦轮廓；</p><p>宫墙外，万家灯火。</p><p>灯笼通红，喧闹晃动。</p><p>谁家孩童，又将烟火弄？</p><p>她也多想一起闹啊，穿着红火的衣裳，驱尽身侧的寒气，苦乐在心，哭笑由己。</p><p>她想着，走近一处漆成暗色的围栏，似乎是想离那片热闹的街市近些。远处，烟火在发出一声长鸣后升空，孩子们兴奋地尖叫着。爆竹却又劈里啪啦地炸开，爆竹声烟火声吵闹声奏乐声乱成闹哄哄的一片，最终什么声音都听不清了，只能看见空中耀眼的弧线，在黑夜的幕布上灿烂一现。</p><p>烟火焚寂，尘缘尽散。</p><h4 id="四"><a href="#四" class="headerlink" title="四"></a>四</h4><p>五月，海棠宫。</p><p>“姐姐，怎么了？”女子出声问道。</p><p>五月的后花园奇花尽现，她便与尚妃相约赏花，不想途经此处，尚妃却无端停下了脚步。女子回身走近在海棠宫阶前驻足的尚妃，顺着她的视线看向掩映着深宫朱墙的几株海棠树——枝干张扬好似张弓挽满，灵动绝尘，偏那海棠又缀了满枝，花姿洒脱不羁，好似浑身雪白的烈马，奔而逐日。</p><p>“这来自蛮夷之地的女子竟也能将这宫打理得井井有条……只是她一介亡国公主，被皇上垂怜，享尽皇室优待，竟也敢不安守本分，忠心圣上，反结党叛逆，实是死不足惜。”</p><p>尚妃没有马上接话，只是望着白色花叶簌簌而下，直到太阳被云掩住片晌，朱墙的阴影攀上兀自轻颤的海棠枝头。</p><p>“我只是在想，年轻的她在草原上策马时，又会是何等的潇洒明快呢？”尚妃笑笑，又摇摇头，“罢了，妹妹，我们走吧。”</p><h4 id="五"><a href="#五" class="headerlink" title="五"></a>五</h4><p>颜若，荆国公主。荆国，北方小国，民皆善骑。光兆二年春，荆国国势盛，偶有征伐，皆胜，始为上留意。光年二年冬，争入北关口，数战，士卒劳顿。荆国国君与上言罢，与约和亲。光兆三年夏，其女颜若入宫，封贵人，居海棠宫。其人性温和，不喜言语，善骑射，有英姿，上许之随行秋猎。越四年，荆国置兵马，屯粮草，上以荆国图谋逆，起兵攻之。光兆七年秋，荆国亡。是以后宫流言渐盛，颜若形容消瘦。光兆八年春，颜若阴得荆国虎符，知荆国尚余二万兵马，私盟殷亲王。光兆八年冬，事发，颜若悔罪坠亡，时年方二十一。其身后物中有一二弦胡琴，甚净，无灰，然近婢皆道五年间未尝闻弦声，不知其所来，不知其所载。</p><p>背景故事梳理：</p><p>（这只是一条颜若主视角的if世界线，较光兆原来设定的剧情和我以后要写进恶渡里的剧情都有很多不同）</p><p>颜若是荆国公主，年少时对奏胡琴的少年芳心暗许，却被其父当作政治工具人和亲鸿国，嫁与宏容竹，在临走前，少年将自己的二弦胡琴赠与颜若。其后荆国因太跳被宏容竹灭国，其实尚存二万兵力与一些财产，皆由某江湖人士握持。某江湖人士将虎符给了颜若，暗示其可与殷亲王结盟谋逆。后因事情败露，颜若于除夕夜自杀。</p><p>宏容竹则是在少时便与一株有灵的樟树结下感情，后因宫中事变出逃，被彼时皇后的侄女棠央照顾，后结亲，返京登基后棠央封为皇后。此时樟树已化形，但宏容竹不知，以为其在后宫之乱中被毁，故会被颜若看见露出苦痛之色。而宏容竹其实也觉得自己和颜若是有类似的（他不知颜若与少年，只觉得她被迫分离故国很惨），所以愿把樟树的拟人画像给她看。尚恬芷后来入宫寻宏容竹，还是才人时，就住在海棠宫的月影阁里，故对颜若相对较了解，知其心性，故有第五部分的对话。</p><p>写下这篇文章时我在想什么：</p><p>想写颜若，是因为听了几首二胡奏的曲，自然浮现了一个驰骋草原的飘逸女子形象。光兆中赶巧有这样一个人，就是这位来自草原的亡国公主了。在本文的设定中，她的愿望其实只有一个，就是自由自在的生活。但对她而言，“究竟何者才是束缚？是权力富贵出身相貌爱情这种种，还是它们所施以自身的重负，抑或是，追求逍遥随性的自我本身。”我觉得这是这个人物身上很值得想一想的点。我认为其实就是她消极自认被束缚的处境，最终导致了她自身思维逐渐也接受了自己对自己的设定，使人生境界趋于狭隘。</p><p>宏容竹在故事中作为与颜若的对照出现，他和颜若一样都被迫和所爱之人分离，但宏容竹比颜若狡猾，比颜若会演，也具有比颜若更多的现世支撑点。同时，他比颜若幸运的多，他最终等到了尚恬芷，所以才会有文中这句“宏容竹再不会露出那般的表情了，而她却仍困在过去的梦魇里，被桎梏于现世的枷锁中，惶惶不得脱”。</p><p>“既知自己将永远被拘于深宫，便再无所念想，却因此无知觉的成了他人的牵线傀儡，真正地失了自我”，这句是说，她被复国的责任压榨，被后宫争宠的妃嫔压榨，还有被某江湖人士压榨（某江湖人士让她造反，是肯定知道她一战争憨憨不会成功的。但他也知道她会迫于父亲的夙愿而走上谋逆的路，这样某江湖人士就可以把烫手山芋（虎符和二万兵马）抛走，而把荆国的财产都贪过来。颜若也奈何不了某江湖人士，反而还要因受了虎符帮他做宫中探子。）</p><p>害，多好一女孩，多惨一女孩。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="一"><a href="#一" class="headerlink" title="一"></a>一</h4><p>她常做这样的梦。</p><p>年轻的女孩飞扬恣意，乌发随性飘散，笑容轻盈明快，驱着枣红的爱马超过身前的父亲母亲，头也不回，一直飞奔向草色碧黄的山丘。在天地交际处，她又兀的停下，失了笑脸，只是看着前方那片映天的绿和广袤沧然的永恒。没有人跟上来。只有一个拿着胡琴的少年慢慢自远处破旧的毡房走来，没有恭敬地称她“公主”，却也疏离地站在她几步开外。</p><p>她总在这时惊醒，起身点烛，不觉泪已落了几回。</p><p>做了梦后她便再睡不着，只能从榻上起身，在这偌大冰冷的海棠宫中坐待天明。</p><p>“可我究竟又在待着何物？”她喃喃着，换上素色宽袖襦裙，又被冰冷的衣物刺得哆嗦。那是宫里上好的锦缎，绣纹繁复细腻，勾勒出夸张富丽的海棠图案，却在凄苦甚于寒夜者心上凋零枯萎。无人知，她只喜轻衣长靴，清风列列；无人晓，她只盼弃了亭榭，马踏万野。</p><p>——草香没，熏香起，</p><p>胡琴声寂，管弦音靡，</p><p>何处且将旧事忆？</p><p>——唯梦而已。</p><h4 id="二"><a href="#二" class="headerlink" title="二"></a>二</h4><p>——“你想杀掉宏容竹吗？”</p><p>——“不。”</p><p>她该恨他的。她该恨他让父亲被迫弃了她和亲，她该恨他最终又毁约出兵荆国，她被囚于深宫的境地皆由他起，她如何可以不恨他？她读史，读过无数“和亲”与“战争”，而唯真实卷涉其间，成为又一段历史，才明白所谓政治之考量、军事之博弈，都不及压垮她的历史灰尘——那些史书不屑记载的寻常爱恨与生死，所有自以为能够长久的天真烂漫与悄然滋长的情愫，她赖以生存的当下与早已许下的未来。</p><p>只是，谁可曾知，那个名叫宏容竹的一国之君亦如是。</p><p>自入宫起她便听闻，帝后故剑情深，鸾凤和鸣，乃天作之合。她也曾亲见，皇上挽过棠央的手，将摘下的红色芍药放在她的手心，再为她拂去散乱的发丝。他的人生近乎完美，纵然青年有颠沛在外的时日，也得棠央一心照顾相守，遑论如今江山在手，爱人在侧，又是何等常人连艳羡都不敢的境地。</p><p>她生于快意的草原，不藏己心已成习惯。然居于深宫数月，她却已学会不在旁人前流露出半分哀落，唯夜深独自对镜，才能看见自己眼底无处倾泻的悲思。只是她确实未尝想到，她竟也能在宏容竹眼中看到她再熟悉不过的空落，这种不知该将视线投向何处，才能望见旧人的徒劳之悲。她自此始觉这世界兜转千回，何人不尝有所遗憾。</p><p>直到那日，那个不请自来的黑衣男子向她递出了荆国虎符。</p><p>她在父亲那儿见过这枚象征着军事权力的虎符——伏虎状的青铜兵符刻着荆国古老的文字，是她从未想过要从亡父手中传承的权力与战争。他告诉她，荆国尚有两万兵力。他告诉她，她的父亲希望她能复国。他告诉她，她是族人唯一的希望。</p><p>压迫窒息感鲜明异常，在那几无思量余地的时刻，她却想起见到宏容竹那般表情时，他笔下的那幅画，一位没有五官的女子——一袭青衫，青丝散漫，周身是干净温婉的气息，不似宫中任何一个施粉黛的妃子。而在其后，她又想起自己梦见过的那个少年——曾笑容温和、小心翼翼地扶她上马，却终在长久不散的血腥气中倒下，碎了满地的胡琴弦音。</p><p>而她最终只是痛苦地闭上了眼，轻声道：“好。”</p><h4 id="三"><a href="#三" class="headerlink" title="三"></a>三</h4><p>光兆八年冬，除夕夜，皇宫角楼。</p><p>她心思散漫地想着过去的事，想起几年前的夏夜，宏容竹于亭中作画，对她道：“朕问你，你可曾，喜欢过什么人？”当时她没有作答，任那个拿着胡琴的少年朦胧在时间的雾里，只克制着自己，唯恐自己一朝点起烛火照向雾的彼端，却终烧了早已枯草遍生的心。</p><p>只是现在，宏容竹再不会露出那般的表情了，而她却仍困在过去的梦魇里，被桎梏于现世的枷锁中，惶惶不得脱。自由早已成为虚妄的符号，一如策马飞奔向的草原尽头，终会在路上失了方向。只是她不明白，究竟何者才是束缚？是权力富贵出身相貌爱情这种种，还是它们所施以自身的重负，抑或是，追求逍遥随性的自我本身。或许唯已至此境地，才能幡然醒悟——既知自己将永远被拘于深宫，便再无所念想，却因此无知觉的成了他人的牵线傀儡，真正地失了自我。</p><p>此刻思量这些似乎已毫无意义，她却极细致地开始回想自己这一生所有的细枝末节，从胡琴弦声落入一派寂寥，自广袤草原辗转深宫朱墙，从国运盛极走向家破人亡。</p><p>高楼上，清瘦轮廓；</p><p>宫墙外，万家灯火。</p><p>灯笼通红，喧闹晃动。</p><p>谁家孩童，又将烟火弄？</p><p>她也多想一起闹啊，穿着红火的衣裳，驱尽身侧的寒气，苦乐在心，哭笑由己。</p><p>她想着，走近一处漆成暗色的围栏，似乎是想离那片热闹的街市近些。远处，烟火在发出一声长鸣后升空，孩子们兴奋地尖叫着。爆竹却又劈里啪啦地炸开，爆竹声烟火声吵闹声奏乐声乱成闹哄哄的一片，最终什么声音都听不清了，只能看见空中耀眼的弧线，在黑夜的幕布上灿烂一现。</p><p>烟火焚寂，尘缘尽散。</p><h4 id="四"><a href="#四" class="headerlink" title="四"></a>四</h4><p>五月，海棠宫。</p><p>“姐姐，怎么了？”女子出声问道。</p><p>五月的后花园奇花尽现，她便与尚妃相约赏花，不想途经此处，尚妃却无端停下了脚步。女子回身走近在海棠宫阶前驻足的尚妃，顺着她的视线看向掩映着深宫朱墙的几株海棠树——枝干张扬好似张弓挽满，灵动绝尘，偏那海棠又缀了满枝，花姿洒脱不羁，好似浑身雪白的烈马，奔而逐日。</p><p>“这来自蛮夷之地的女子竟也能将这宫打理得井井有条……只是她一介亡国公主，被皇上垂怜，享尽皇室优待，竟也敢不安守本分，忠心圣上，反结党叛逆，实是死不足惜。”</p><p>尚妃没有马上接话，只是望着白色花叶簌簌而下，直到太阳被云掩住片晌，朱墙的阴影攀上兀自轻颤的海棠枝头。</p><p>“我只是在想，年轻的她在草原上策马时，又会是何等的潇洒明快呢？”尚妃笑笑，又摇摇头，“罢了，妹妹，我们走吧。”</p><h4 id="五"><a href="#五" class="headerlink" title="五"></a>五</h4><p>颜若，荆国公主。荆国，北方小国，民皆善骑。光兆二年春，荆国国势盛，偶有征伐，皆胜，始为上留意。光年二年冬，争入北关口，数战，士卒劳顿。荆国国君与上言罢，与约和亲。光兆三年夏，其女颜若入宫，封贵人，居海棠宫。其人性温和，不喜言语，善骑射，有英姿，上许之随行秋猎。越四年，荆国置兵马，屯粮草，上以荆国图谋逆，起兵攻之。光兆七年秋，荆国亡。是以后宫流言渐盛，颜若形容消瘦。光兆八年春，颜若阴得荆国虎符，知荆国尚余二万兵马，私盟殷亲王。光兆八年冬，事发，颜若悔罪坠亡，时年方二十一。其身后物中有一二弦胡琴，甚净，无灰，然近婢皆道五年间未尝闻弦声，不知其所来，不知其所载。</p><p>——</p><p>背景故事梳理：</p><p>（这只是一条颜若主视角的if世界线，较光兆原来设定的剧情和我以后要写进恶渡里的剧情都有很多不同）</p><p>颜若是荆国公主，年少时对奏胡琴的少年芳心暗许，却被其父当作政治工具人和亲鸿国，嫁与宏容竹，在临走前，少年将自己的二弦胡琴赠与颜若。其后荆国因太跳被宏容竹灭国，其实尚存二万兵力与一些财产，皆由某江湖人士握持。某江湖人士将虎符给了颜若，暗示其可与殷亲王结盟谋逆。后因事情败露，颜若于除夕夜自杀。</p><p>宏容竹则是在少时便与一株有灵的樟树结下感情，后因宫中事变出逃，被彼时皇后的侄女棠央照顾，后结亲，返京登基后棠央封为皇后。此时樟树已化形，但宏容竹不知，以为其在后宫之乱中被毁，故会被颜若看见露出苦痛之色。而宏容竹其实也觉得自己和颜若是有类似的（他不知颜若与少年，只觉得她被迫分离故国很惨），所以愿把樟树的拟人画像给她看。尚恬芷后来入宫寻宏容竹，还是才人时，就住在海棠宫的月影阁里，故对颜若相对较了解，知其心性，故有第五部分的对话。</p><p>——</p><p>写下这篇文章时我在想什么：</p><p>想写颜若，是因为听了几首二胡奏的曲，自然浮现了一个驰骋草原的飘逸女子形象。光兆中赶巧有这样一个人，就是这位来自草原的亡国公主了。在本文的设定中，她的愿望其实只有一个，就是自由自在的生活。但对她而言，“究竟何者才是束缚？是权力富贵出身相貌爱情这种种，还是它们所施以自身的重负，抑或是，追求逍遥随性的自我本身。”我觉得这是这个人物身上很值得想一想的点。我认为其实就是她消极自认被束缚的处境，最终导致了她自身思维逐渐也接受了自己对自己的设定，使人生境界趋于狭隘。</p><p>宏容竹在故事中作为与颜若的对照出现，他和颜若一样都被迫和所爱之人分离，但宏容竹比颜若狡猾，比颜若会演，也具有比颜若更多的现世支撑点。同时，他比颜若幸运的多，他最终等到了尚恬芷，所以才会有文中这句“宏容竹再不会露出那般的表情了，而她却仍困在过去的梦魇里，被桎梏于现世的枷锁中，惶惶不得脱”。</p><p>“既知自己将永远被拘于深宫，便再无所念想，却因此无知觉的成了他人的牵线傀儡，真正地失了自我”，这句是说，她被复国的责任压榨，被后宫争宠的妃嫔压榨，还有被某江湖人士压榨（某江湖人士让她造反，是肯定知道她一战争憨憨不会成功的。但他也知道她会迫于父亲的夙愿而走上谋逆的路，这样某江湖人士就可以把烫手山芋（虎符和二万兵马）抛走，而把荆国的财产都贪过来。颜若也奈何不了某江湖人士，反而还要因受了虎符帮他做宫中探子。）</p><p>害，多好一女孩，多惨一女孩。</p>]]></content>
     
     
     <categories>
@@ -763,7 +818,7 @@
     <link href="/2020/02/15/fiction/NotHappy/WhiteMustang/"/>
     <url>/2020/02/15/fiction/NotHappy/WhiteMustang/</url>
     
-    <content type="html"><![CDATA[<p>那块脏绿的破布在老旧惨淡的筒子楼间显得过分突兀。</p><p>它一动不动地躺在一片油漆斑驳的墙角下，任霉斑描绘着黑色的伤口，就像横死街头的豆蔻少女。</p><p>于是她放慢脚步，走近，轻轻地将米白色深口皮鞋的鞋尖踢向它。末了，她退后站定，抬头看了眼天空。七月的太阳烫人心肺，光裹着渐沸的蝉鸣如水汽般粘腻地贴在她的脸颊上，熟悉的夏日温度勾着颤抖的心升温，使她回想起与他度过的那些本会燥热不安的夏夜。她不禁带上了笑。</p><p>回头，她又重新转向那块死寂的破布，小心翼翼地用鞋将它从阴湿的墙角，一点一点扒拉到热切盛大的阳光底下。</p><p>她是来找他的。</p><p>顺着楼梯上了楼，她没急着去目的地，只是停在被阳光晒到滚烫的走廊里朝下望去。楼前不大的空地横七竖八地停满了车，她那不输任何一道阳光的灼热视线，此刻只落在他的车上，他的白色野马。</p><p>今日的阳光倒烫得正好，也一如那日白色野马的光芒刺眼。</p><p>只是，它不应挤在落满灰尘数尺的旧车间，它要停在金黄色的沙滩边，在夏季午后的骄阳下冷着眼，一如杀手般睥睨众生。而脸颊被阳光晒得通红的她，就像今天这样穿着大红的纱裙，踮着脚，独自在沙滩上起舞。这时，有人打开了车门，车窗反射的光像一道闪电般射中了她，一个叼着雪茄的男人从车里出来，慢慢地走向她。</p><p>夏日湿热恼人，皮肤相触着渗出薄汗，但她总是希望，他能把她搂住，搂的再紧一点，再久一点。</p><p>她遥遥地对楼下的白色野马抛去一个飞吻，回身去往他们曾经秘密约会的地点。她和他并未约好，只是她午后小憩时涌上了令人不安的烦闷，熟悉的号码拨出又挂断，从镂空窗帘上散落的光烙下点点夏日的痕迹，像他的吻一般落满全身。她一袭红衣盛装，只漫步而行，未曾想到能与他的白色野马邂逅。</p><p>她开了门， 室内一片昏黑。地上散落着衣物，从玄关一直延伸到里屋，她不由后退了一步。大门转轴发出绵长的摩擦声，又被那从卧室传出的调笑声掩埋，她又退后了一步，关上了门。</p><p>在一片混乱的蝉声中，她格外安静。</p><p>她又回到了她片刻前驻足的地方。从上望去，白色野马冷酷如同杀手，一如他骨节分明的手摘下黑色墨镜，投射来野兽般危险的目光。</p><p>她曾和那目光长久的相视。他冷漠的眸子像投入夏季燥热空气的冰块，她却迷醉于他烫人的唇，和他从方向盘滑落下的，搭在她腰间的炙热的手。</p><p>他就这样加速，持续加速，直到发动机的轰鸣声在她耳畔低吼，让她沉沦，让她疯狂。在晕眩的视线中，她感到他的眼眸正落向她，落向她正跳动不已的滚烫心脏。</p><p>她早已无法逃脱，她早已陷入了他那杀手般冰冷却又无比灼人的双眸，像一道闪电射中心脏，自她看到他的白色野马那天。</p><p>她捏着红色的纱裙，小心地沿楼梯而下，不远处，被拖出墙角的脏绿色破布，却再次被圈定在阴影的界限里。</p><p>Summer’s meant for loving and leaving</p><p>I was such a fool for believing that you</p><p>Could change all the ways you’re been living</p><p>But you just couldn’t stop</p><p>The day I saw your white mustang</p><p>Your white mustang</p><p>——  Lana Del Rey《White Mustang》</p>]]></content>
+    <content type="html"><![CDATA[<p>那块脏绿的破布在老旧惨淡的筒子楼间显得过分突兀。</p><p>它一动不动地躺在一片油漆斑驳的墙角下，任霉斑描绘着黑色的伤口，就像横死街头的豆蔻少女。</p><p>于是她放慢脚步，走近，轻轻地将米白色深口皮鞋的鞋尖踢向它。末了，她退后站定，抬头看了眼天空。七月的太阳烫人心肺，光裹着渐沸的蝉鸣如水汽般粘腻地贴在她的脸颊上，熟悉的夏日温度勾着颤抖的心升温，使她回想起与他度过的那些本会燥热不安的夏夜。她不禁带上了笑。</p><p>回头，她又重新转向那块死寂的破布，小心翼翼地用鞋将它从阴湿的墙角，一点一点扒拉到热切盛大的阳光底下。</p><p>——</p><p>她是来找他的。</p><p>顺着楼梯上了楼，她没急着去目的地，只是停在被阳光晒到滚烫的走廊里朝下望去。楼前不大的空地横七竖八地停满了车，她那不输任何一道阳光的灼热视线，此刻只落在他的车上，他的白色野马。</p><p>今日的阳光倒烫得正好，也一如那日白色野马的光芒刺眼。</p><p>只是，它不应挤在落满灰尘数尺的旧车间，它要停在金黄色的沙滩边，在夏季午后的骄阳下冷着眼，一如杀手般睥睨众生。而脸颊被阳光晒得通红的她，就像今天这样穿着大红的纱裙，踮着脚，独自在沙滩上起舞。这时，有人打开了车门，车窗反射的光像一道闪电般射中了她，一个叼着雪茄的男人从车里出来，慢慢地走向她。</p><p>夏日湿热恼人，皮肤相触着渗出薄汗，但她总是希望，他能把她搂住，搂的再紧一点，再久一点。</p><p>她遥遥地对楼下的白色野马抛去一个飞吻，回身去往他们曾经秘密约会的地点。她和他并未约好，只是她午后小憩时涌上了令人不安的烦闷，熟悉的号码拨出又挂断，从镂空窗帘上散落的光烙下点点夏日的痕迹，像他的吻一般落满全身。她一袭红衣盛装，只漫步而行，未曾想到能与他的白色野马邂逅。</p><p>她开了门， 室内一片昏黑。地上散落着衣物，从玄关一直延伸到里屋，她不由后退了一步。大门转轴发出绵长的摩擦声，又被那从卧室传出的调笑声掩埋，她又退后了一步，关上了门。</p><p>在一片混乱的蝉声中，她格外安静。</p><p>她又回到了她片刻前驻足的地方。从上望去，白色野马冷酷如同杀手，一如他骨节分明的手摘下黑色墨镜，投射来野兽般危险的目光。</p><p>她曾和那目光长久的相视。他冷漠的眸子像投入夏季燥热空气的冰块，她却迷醉于他烫人的唇，和他从方向盘滑落下的，搭在她腰间的炙热的手。</p><p>他就这样加速，持续加速，直到发动机的轰鸣声在她耳畔低吼，让她沉沦，让她疯狂。在晕眩的视线中，她感到他的眼眸正落向她，落向她正跳动不已的滚烫心脏。</p><p>她早已无法逃脱，她早已陷入了他那杀手般冰冷却又无比灼人的双眸，像一道闪电射中心脏，自她看到他的白色野马那天。</p><p>她捏着红色的纱裙，小心地沿楼梯而下，不远处，被拖出墙角的脏绿色破布，却再次被圈定在阴影的界限里。</p><p>——</p><p>Summer’s meant for loving and leaving</p><p>I was such a fool for believing that you</p><p>Could change all the ways you’re been living</p><p>But you just couldn’t stop</p><p>The day I saw your white mustang</p><p>Your white mustang</p><p>——  Lana Del Rey《White Mustang》</p>]]></content>
     
     
     <categories>
@@ -790,11 +845,11 @@
   
   
   <entry>
-    <title>恶渡（一）：穿越者Z</title>
-    <link href="/2020/02/01/fiction/happy/EDu/EDu1/"/>
-    <url>/2020/02/01/fiction/happy/EDu/EDu1/</url>
+    <title>恶渡（三）：纸船啊纸船</title>
+    <link href="/2020/02/01/fiction/happy/EDu/EDu3/"/>
+    <url>/2020/02/01/fiction/happy/EDu/EDu3/</url>
     
-    <content type="html"><![CDATA[<p>1</p><p>他终于从一片似雾非雾的混乱间睁开眼，才模糊地意识到自己已经穿越了。</p><p>脑壳嗡嗡的疼，勉强抬起的头又因不堪其重而落下。远处一群人大叫大嚷着“少爷”的声音越来越近。他意欲从地上爬起，却双脚一软，栽了回去。他果断放弃，只努力把头往前伸了伸，视物却越发模糊，又被嘈杂不堪的声音越搅越乱。</p><p>在他来前这具身体的主人都干了些什么啊啊啊！他在心里破口大骂，终究撑不住，眼前一黑。</p><p>2</p><p>他醒了。</p><p>他惊了。</p><p>他自是知道他要穿在一个贵公子身上。可考的史实资料显示，这位一开头就给他来了一段云里雾里剧情的贵公子在历史上并未留下什么详细信息，倒是他的家族在先代显赫尊贵，且在此朝的经历也将……颇有意思。</p><p>只是，可是，但是，为什么当他醒来后，会有这么一个漂亮姑娘站在他床边？</p><p>他睁着眼，张了张嘴。姑娘见他醒了，本想出门喊人，又见其张嘴，估摸他大约是要说什么，于是凑下身去。</p><p>“你美得让在下一颗心无从安放。”他从床上坐起，眯起了黑色的眼睛，嘴角带笑。</p><p>“嗷！！！好痛你快放开！！！”他被女子掐住了胳膊肉，只能徒劳地在床上扑腾。他本就刚从昏迷中醒来，身上哪都疼，膝盖又被草药包着，逐渐没了胡闹的力气，最终还是蔫下去了。</p><p>女子放开被她掐住的胳膊，冷哼一声，道：“林乔祁，我再不会信你的鬼话。只是，我倒要看看，你怎么对你父母交代今日的事。”</p><p>噫，“他”今天做了什么？他努力回想，却好像什么都想不起来。不对，按理来讲，他本该会有此人过往的记忆。他呆坐了几秒，目光从女子姣好的面庞一直飘忽到绣着碧竹图案的锦衾上，还是什么都想不起来。猛然间他抱住自己的脑袋，拳掌兼用地对自己的头又打又扇。</p><p>女子止住了他的手，嗤笑：“怎么，看到本郡君太美，悔不当初？”</p><p>林乔祁抬头，目光真挚：“‘俊眼修眉，顾盼神飞，文彩精华，见之忘俗’；郡君甚美，只是不知姓甚名谁？”</p><p>一阵沉默。</p><p>她打量了林乔祁一阵，声音冷下去了：“你最好不要给我开玩笑。”</p><p>“当真没有玩笑，我似乎，没有记忆了。”林乔祁小心翼翼地看着女子，停顿了一会，“所以这位就算失忆也能让我一见钟情二见倾心三见想定亲的女子是？”</p><p>女子严肃忧虑的脸挂不住了，欲笑非笑：“我是程浅。”</p><p>“郡君？”</p><p>“因我是棠央皇后的大哥——程天戎将军的女儿，故被封为郡君。”</p><p>啊，这二位他倒是知道了。不过……他看了程浅一眼，暂时按下不想。</p><p>“是不是想起什么了？”</p><p>乔祁干咳了一声，摇了摇头：“我是谁？”</p><p>他自是知道自己是谁，这个家族他该知道的不该知道的也都了解的七七八八了，此问不过是想搞清这人本来的德行和交游，顺便寻机调戏一下某郡君。</p><p>程浅似乎还没从乔祁失忆的事实中缓过来，愣了片刻才道：“林乔祁，你是当今左相林乔清的独子，乔贵妃之弟，宁振太子之舅。”</p><p>见林乔祁微微颔首，她便继续讲：“你平时不务正业，天天拈花惹草，四处留情。程家素与林家交好，我与你幼时便相识，这次你惹下祸来，我便是见你父母尚在别庄辟谷三日而未归，念你我旧情……”</p><p>“打住打住！那我们莫不是青梅竹马？我说这个漂亮妹妹怎么好像在哪儿见过，竟是失忆至此都无法忘怀。”他故意略过前面一连串的批判，只是忍笑着打趣。</p><p>程浅白眼一翻，正要发作，便听到敲门声响起。“进来吧。”说着她又瞅了眼林乔祁，只觉得这人哪怕记忆丧失回炉重造也改不了这吊儿郎当留恋花丛的脾性。</p><p>来人是伺候乔祁的丫鬟，神色有些紧张，进屋后先是神经质一般四处张望几下，才开口道：“郡君，相爷和夫人回来了。”她随后才看到林乔祁已经醒来，忙对他行礼，为难道：“少爷，相爷夫人已听闻此事，面上愠色颇盛……”</p><p>“行了，你先下去吧。”他对这个过分紧张的丫鬟微微一笑，摆手示意她离开。</p><p>听房门重新被关上，他一边伸手按了按被草药和纱布裹住的膝盖，一边用右手指着自己，满脸无辜：“所以我到底闯了什么祸？”</p><p>程郡君双手叠在胸前，只嫌弃地吐出几个字：“今早，鶏满楼。”</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><p>翌日，昭行街。</p><p>日理万机的焚香阁阁主玄逸尘一早就把事全推给了属下，此刻正不紧不慢地混在熙攘的人群里四处闲逛。</p><p>天色有些阴沉，又偶尔裂开缝隙钻出光来，像街上起伏的叫卖声般让人捉摸不透规律。玄逸尘的目光略过街头吵嚷的摊子，落在青瓦屋檐下金灿灿的招牌与幡旗间。他眯眼看着不远处那家门庭冷落的古玩小店，慢慢悠悠地踱步上前。</p><h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>店里的灰尘呛的玄逸尘一阵咳嗽，坐在台子后的女子抬头，有些讶然：“阁主？”</p><p>“嗯，就是那个每次来就一定会被呛咳嗽的人。”屋子前后的草帘全都半卷着，显得室内有些昏暗，他扫视了一圈，店里除他没有别的来客。</p><p>女子忍笑：“阁主来是有什么要事吩咐吗？”</p><p>“否，只是来打听近日京城之事。”</p><p>“成，倒也确有两件有意思的事。”她顿了一下，清清嗓子道，“第一件事与右相府有关。就在昨日傍晚，府里的人在我们昭行街街头挂出了一张榜，写着上联，让人对出下联，对出者有重赏。昨晚城里许多文人墨客都去右相府对下联了，但全是两手空空地出来，也不知这右相府到底打的什么算盘。”</p><p>“有把上联抄下来吗?”</p><p>“来，在这，这上联的字似乎都是自己造的，确实很是奇怪。”女子打开抽屉，翻出一张纸。</p><p>玄逸尘把叠着的纸打开，见上面只写了五个字：</p><p>氢 氦 锂 铍 硼</p><h4 id="3"><a href="#3" class="headerlink" title="3"></a>3</h4><p>他默默把纸叠好，欲言又止，沉默了半晌后才开口：“说第二件事吧。”</p><p>女子见阁主神色古怪，也不多问，只继续讲：“第二件事与左相府有关。街坊都传着这事呢，不过我猜阁主大概会对这类贵公子的事不太感兴趣？就是左相府的少爷昨日……”</p><p>“左相府的少爷昨日去青楼没带够钱的事？”玄阁主稳稳地接话。</p><p>？原来阁主这么八卦的吗</p><p>“不过关于这件事，我今天刚得到一个消息，”她抬头看了眼门口，声音放低，“有人亲眼看到，其实那位少爷后来是被丐帮的人劫了，才满身是伤的倒在巷子里。”</p><p>玄逸尘挑眉，居然还有这么个内情。</p><p>“好，我知道了。”他起身，“你这有没有纸笔，可否借我一用？”</p><p>纸、笔、墨都被拿出来了。</p><p>玄逸尘草草地写下“碳氮氧氟氖”五字，随意折了折纸就要出门。</p><p>“这又是要做何？”身后的女子发问。</p><p>“去领重赏。”</p><h4 id="4"><a href="#4" class="headerlink" title="4"></a>4</h4><p>右相府。</p><p>管家正领着玄逸尘往书斋去。因来对下联的人太多，便规定首字对出方可入内——于是直到玄逸尘来，还没有人对出第一个字。</p><p>玄阁主跟着管家在府里绕着，只觉这相府虽景致淡雅、布局自然，却透露着难以名状的逼仄感。Z那个家伙，可也是生活在这样的地方了啊。他想着，很轻地叹了口气。</p><p>“相爷，这位公子对出了第一个字。”管家进了书斋，对坐在桌前的那人恭敬地行礼。玄逸尘也正要规规矩矩地行礼，却被相爷止住了。</p><p>“你下去，我要和这位公子谈谈。”右相爷对管家一挥手，后者马上退了出去，并将房门掩好。</p><p>玄逸尘从袖子里取出写着下联的宣纸，递给江右相。他本以为对方一看到便会认得，却不料他打开抽屉，取出另一张宣纸，一个字一个字的对过。</p><p>玄逸尘皱了皱眉。他稍稍走近，看了眼另一张宣纸上的字——“氢氦锂铍硼，碳氮氧氟氖”，能辨得字形，却也说不上好看，再多看几眼，还是完全陌生的笔法。</p><p>江右相终于对完了字，他长舒一口气，突然起身对玄逸尘行礼。</p><p>玄逸尘暂时按下心头的疑虑，尽心尽力扮演起国家好子民的角色。只见他急忙扶起右相，道：“右相为何突然行此大礼？勿要折煞在下。”</p><p>“这礼我是一定要行的，只是有一事也只有公子能替我想想办法了。”</p><p>“请讲。”玄逸尘拱手。</p><p>“唉，”江右相先是叹了口气，“当今圣上迷恋一株千年古樟，已近发狂了。皇后都向程将军抱怨过多次，说圣上现在无事便会去往后花园，在那樟树旁呆上一宿。有一次竟差点赶不上早朝，那日的情景作为臣子我现在想起还是觉得荒唐至极，实在是有辱帝威，有辱帝威啊！”右相说到声音颤抖，不能自已，又自觉失态，便紧闭了嘴。</p><p>“请等在下片刻。”说着，玄逸尘闭上了眼睛。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs">《光兆帝传·尚妃》<br><br>光兆帝弘容竹幼年性好画，亦好草木，每至后园，坐即数时。帝见如此，欲与之草木为生辰礼，恰异国使献千年樟树于帝，仅数尺长，但云有树灵居之，诚罕见之神树也。遂与其子，栽于后园西北，缘即是始矣。<br><br>容竹甚惜，常亲手浇之。后学摹之法矣，日日摹樟树之形状于亭中。树灵感其意，虽不可言，然曳叶于风中，音如缠绵低语之情话，形如舞姿曼妙之少女。日光转叶隙，樟叶浮人影，一人一树，如此足矣。<br><br>时一日冬晨，容竹皇子坐亭习画，忽过狂风，恰两樟叶飘落画卷。笑而拾之，叶脉与手纹相触间，两心相悦。<br><br>惜世事无常，越七年，恒贵妃因病而辞，帝亦病矣。后独揽大权，后宫风云变化，非数语可尽者。容竹亦连，即出宫避，无与樟树别。<br><br>不见容竹，樟自憔悴，偶闻宫女传言，始知详略。欲随去，恐身位低贱，只怅然而叹。叶黄而陨，形容枯槁，若数日即死。<br><br>时一仙人云游而过，问之，树灵具告以事，并求肉身以伴容竹。仙人欲拒之，见树灵愀然，不忍。思片刻，遂许之二十八年肉身，时至则亡，无入轮回。树灵谢之，消于空中。<br><br>仙人摇头而叹曰：“皇子乃天上竹仙下凡，何需千年树灵之慕。然其命中所定之劫数，其奈我何？噫吁嚱，此实属不可结缘也！”遂乘云而去。<br><br>甲申年阳月，帝死，容竹回京登基，改号光兆，光兆传奇遂始也。<br></code></pre></td></tr></table></figure><p>这种鬼都不会信的神话情节都能记在史书里吗？？？玄逸尘睁开眼，暗暗摇头叹气，只快速计算了这位“树精”需要出现在皇上面前的时间，是光兆八年春，距今尚有几个月。</p><p>“相爷，今年乃光兆七年，若在下没有记错，明年季春会有秀女进宫？”</p><p>“没错，但……”</p><p>“无妨。你只需收买几个宫女躲在暗处，在樟树边记录皇上的一言一行，而后让一名女子熟背先前记录下的内容，假作是树灵转世，混在秀女里送入宫中即可。”</p><p>右相思索一阵，点点头：“此法可行，只是要到来年三月。”</p><p>“右相若欲将事做绝，大可早些毁了树，断其念想，也好让皇上早些专心朝政。若他实是苦痛不堪，到来年三月也将有‘树灵化身’的佳人抚之。”玄逸尘淡淡地陈述。</p><p>“此法甚妙，此法甚妙！”右相拍手称赞，“感谢公子的点拨，吾弟果真没有骗我。”</p><p>“敢问以此对联召我来的主意是谁出的？”玄逸尘觉得有些疲惫，他原想揉揉自己的眉心，又想起自己现在半边脸都被面具挡着，又放下了手。</p><p>“我原以为公子知道。那便请公子稍等，除了这个奇怪的造字对联，还有一件玩意。”右相先行了个大礼以示感谢，再从身侧的书匣里拿出一个白色方块。</p><p>玄逸尘瞳孔收缩，这是——“纸船”。</p>]]></content>
     
     
     <categories>
@@ -803,7 +858,7 @@
       
       <category>开心小说</category>
       
-      <category>（咕了的）恶渡</category>
+      <category>（咕了）恶渡</category>
       
     </categories>
     
@@ -825,7 +880,7 @@
     <link href="/2020/02/01/fiction/happy/EDu/EDu2/"/>
     <url>/2020/02/01/fiction/happy/EDu/EDu2/</url>
     
-    <content type="html"><![CDATA[<p>1</p><p>他睁开眼睛，发现自己正凭着朱红的栏杆。</p><p>面前是漆绿如墨的松，层叠交错于高阁之前，堪堪掩没远处翻着白浪的蜿蜒大江。江的那岸，京城大户人家的金色屋檐棱角尖锐，与欲坠的落日沉默对峙。</p><p>听见背后悉索的脚步声，他微微侧身。</p><p>“阁主。”背后那人躬身抱拳。</p><p>朱栏前的黑发男子闭了闭眼，沉默了一阵，开口道：“我知道，只是此事要暂且搁置。”</p><p>“可是……”</p><p>“我不想再说第二遍。”他转身，清冷的目光扫过光线暗淡的里屋。</p><p>“是。”</p><p>“今晚我要去处理一起突发事件。”他漆黑的眸子意味不明地看向来者，淡淡道，“余成，你下去吧。”</p><p>“请阁主小心，属下告退。”余成不敢多言，行完礼后反身离开。</p><p>朱栏前的男子仍立在原处，须臾才踱步进了里屋。</p><p>2</p><p>是夜，左相府邸。</p><p>林乔祁在用晚膳时被左相和左相夫人骂得狗血淋头，幸而他死皮赖脸拉着程浅留下，让她终于看不下去，把乔祁记忆或有损的事实直戳戳地讲出来了。</p><p>此刻他刚哄骗走了身边的丫鬟婢女，忍着膝盖和身上多处淤血的痛楚，在屋里四处翻找。秋日的夜晚蝉鸣稀稀落落，四周寂无人声，朗朗的烛光在墙上不规律地颤动，像刚用了大鱼大肉的富贾，红光满面，只顾腆着肚子打饱嗝。</p><p>林乔祁望着蜡烛出神了片刻。半晌后收回视线，却不知想到什么，面色逐渐沉落。</p><p>他复又开始在面前的大匣子里探索。这是他刚从床底拖出来的，放的位置颇深，想必会有些好东西。</p><p>外面好像刮过了一阵大风，震得屋门轻颤。乔祁刚想去将窗户掩好，蜡烛却先熄了。他叹了口气，只得拖着半残的腿蹭到桌边，在桌上摸索着火折子。</p><p>“你是在找它吗？”</p><p>方桌的另一端，微弱的火光随着不速之客的声音闪起，将蜡烛重新点着了。通亮的火光映在来者花纹诡谲的蛇纹面具上，林乔祁抬头看了眼来人，只觉得这一幕宛如邪恶反派boss的出场CG，便又叹了口气。</p><p>对方将火折子盖起，放在桌上，自顾自地坐在床头，摘下面具，不依不饶地继续提问：“还是说，你在找我？”</p><p>正艰难地将自己挪回匣子前的林乔祁？</p><p>“恶不恶心，X你脑子穿傻了？”乔祁欲作呕吐状，又发现对方面具下的面孔竟有些好看，不由暂停表演，多看了那张棱角分明的俊脸几眼。</p><p>“不过是学你说话的方式，也好让你体会一番。”</p><p>被叫做“X”的年轻男子声音冷漠无情，乔祁眼珠却骨碌一转，清清嗓子，做足了姿态，道：“哎呀，乔祁妹妹方才不过是玩笑话，逸尘哥哥怎可这么欺负我，真是讨厌~”说完，还对X抛了个十足做作的媚眼。</p><p>坐在床头的“逸尘哥哥”对他的自导自演视若无睹，乔祁自觉无趣，低下头又开始在匣子里胡乱搜索。</p><p>片晌，X突然出声：“Y的穿越出现了问题。”</p><p>“你去找过他了？”乔祁抬头。</p><p>“不是俞双典。”玄逸尘面色凝重地摇头，“我进去的时候他有一些反应过激，便采取了些手段，再随意找了个闯人房门的借口，以焚香阁的名义留了纸条，英语写的。”</p><p>乔祁了然，又皱了皱眉：“那是谁用了‘纸船’？”</p><p>没有回答。</p><p>乔祁指了指自己，又道：“我也出现了问题，完全没有‘他’的记忆。”</p><p>对方难得赏他一个眼神，道：“我这边一切正常，你便尽量糊弄过去。当务之急是找到Y以及开始修复工作。”</p><p>他没好意思告诉X，其实左相府上下都在庆祝他脑子跌坏的事，于是移开视线，从匣子里捞出几本小书。</p><p>“你在找什么？”</p><p>“找乐子啊！”他毫不惭愧地翻开书，发现是讲江湖情仇的话本，便又丢了回去。</p><p>玄逸尘面无表情地拎起枕头在他腿上打了一下，却换来某少爷浮夸的嗷嗷叫疼。</p><p>“你别不信，”林乔祁把裤子卷上去，露出纱布裹着的膝盖，“这死小子今天上青楼没带够银子，那青楼的老鸨不认得他，一定要让人跟他回去。他偏又死要脸，正商量着突然就跑了，路上遇上自家侍卫也不停，竟也真跑远了。最后肯定是跑摔了，总之我一过来，就是倒在小巷里，身上各种疼。”</p><p>玄逸尘淡淡地说：“却也像你会做出的事。”</p><p>林乔祁冲上去就要和他拼了，但看到对方毫无波澜的冷漠面孔，又满脸尴尬重新坐了下去。</p><p>“哎，就算看过古书，也想不到这位大名鼎鼎的焚香阁阁主竟生的如此俊俏。”乔祁托腮望向X。</p><p>某阁主不为所动，戴上面具，起身道：“形势不明，小心为上。到明天就可以出去探一探了。”</p><p>他打开窗户飞身跃出。乔祁看着他在一套行云流水的操作后消失不见，好似只是融在凄寂微弱的蝉鸣声中了。</p><p>“等等——就我这垃圾身体怎么出去玩啊！”乔祁后知后觉，愤愤地哀嚎。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><p>他睁开眼睛，发现自己正凭着朱红的栏杆。</p><p>面前是漆绿如墨的松，层叠交错于高阁之前，堪堪掩没远处翻着白浪的蜿蜒大江。江的那岸，京城大户人家的金色屋檐棱角尖锐，与欲坠的落日沉默对峙。</p><p>听见背后悉索的脚步声，他微微侧身。</p><p>“阁主。”背后那人躬身抱拳。</p><p>朱栏前的黑发男子闭了闭眼，沉默了一阵，开口道：“我知道，只是此事要暂且搁置。”</p><p>“可是……”</p><p>“我不想再说第二遍。”他转身，清冷的目光扫过光线暗淡的里屋。</p><p>“是。”</p><p>“今晚我要去处理一起突发事件。”他漆黑的眸子意味不明地看向来者，淡淡道，“余成，你下去吧。”</p><p>“请阁主小心，属下告退。”余成不敢多言，行完礼后反身离开。</p><p>朱栏前的男子仍立在原处，须臾才踱步进了里屋。</p><h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>是夜，左相府邸。</p><p>林乔祁在用晚膳时被左相和左相夫人骂得狗血淋头，幸而他死皮赖脸拉着程浅留下，让她终于看不下去，把乔祁记忆或有损的事实直戳戳地讲出来了。</p><p>此刻他刚哄骗走了身边的丫鬟婢女，忍着膝盖和身上多处淤血的痛楚，在屋里四处翻找。秋日的夜晚蝉鸣稀稀落落，四周寂无人声，朗朗的烛光在墙上不规律地颤动，像刚用了大鱼大肉的富贾，红光满面，只顾腆着肚子打饱嗝。</p><p>林乔祁望着蜡烛出神了片刻。半晌后收回视线，却不知想到什么，面色逐渐沉落。</p><p>他复又开始在面前的大匣子里探索。这是他刚从床底拖出来的，放的位置颇深，想必会有些好东西。</p><p>外面好像刮过了一阵大风，震得屋门轻颤。乔祁刚想去将窗户掩好，蜡烛却先熄了。他叹了口气，只得拖着半残的腿蹭到桌边，在桌上摸索着火折子。</p><p>——</p><p>“你是在找它吗？”</p><p>——</p><p>方桌的另一端，微弱的火光随着不速之客的声音闪起，将蜡烛重新点着了。通亮的火光映在来者花纹诡谲的蛇纹面具上，林乔祁抬头看了眼来人，只觉得这一幕宛如邪恶反派boss的出场CG，便又叹了口气。</p><p>对方将火折子盖起，放在桌上，自顾自地坐在床头，摘下面具，不依不饶地继续提问：“还是说，你在找我？”</p><p>正艰难地将自己挪回匣子前的林乔祁？</p><p>“恶不恶心，X你脑子穿傻了？”乔祁欲作呕吐状，又发现对方面具下的面孔竟有些好看，不由暂停表演，多看了那张棱角分明的俊脸几眼。</p><p>“不过是学你说话的方式，也好让你体会一番。”</p><p>被叫做“X”的年轻男子声音冷漠无情，乔祁眼珠却骨碌一转，清清嗓子，做足了姿态，道：“哎呀，乔祁妹妹方才不过是玩笑话，逸尘哥哥怎可这么欺负我，真是讨厌~”说完，还对X抛了个十足做作的媚眼。</p><p>坐在床头的“逸尘哥哥”对他的自导自演视若无睹，乔祁自觉无趣，低下头又开始在匣子里胡乱搜索。</p><p>片晌，X突然出声：“Y的穿越出现了问题。”</p><p>“你去找过他了？”乔祁抬头。</p><p>“不是俞双典。”玄逸尘面色凝重地摇头，“我进去的时候他有一些反应过激，便采取了些手段，再随意找了个闯人房门的借口，以焚香阁的名义留了纸条，英语写的。”</p><p>乔祁了然，又皱了皱眉：“那是谁用了‘纸船’？”</p><p>没有回答。</p><p>乔祁指了指自己，又道：“我也出现了问题，完全没有‘他’的记忆。”</p><p>对方难得赏他一个眼神，道：“我这边一切正常，你便尽量糊弄过去。当务之急是找到Y以及开始修复工作。”</p><p>他没好意思告诉X，其实左相府上下都在庆祝他脑子跌坏的事，于是移开视线，从匣子里捞出几本小书。</p><p>“你在找什么？”</p><p>“找乐子啊！”他毫不惭愧地翻开书，发现是讲江湖情仇的话本，便又丢了回去。</p><p>玄逸尘面无表情地拎起枕头在他腿上打了一下，却换来某少爷浮夸的嗷嗷叫疼。</p><p>“你别不信，”林乔祁把裤子卷上去，露出纱布裹着的膝盖，“这死小子今天上青楼没带够银子，那青楼的老鸨不认得他，一定要让人跟他回去。他偏又死要脸，正商量着突然就跑了，路上遇上自家侍卫也不停，竟也真跑远了。最后肯定是跑摔了，总之我一过来，就是倒在小巷里，身上各种疼。”</p><p>玄逸尘淡淡地说：“却也像你会做出的事。”</p><p>林乔祁冲上去就要和他拼了，但看到对方毫无波澜的冷漠面孔，又满脸尴尬重新坐了下去。</p><p>“哎，就算看过古书，也想不到这位大名鼎鼎的焚香阁阁主竟生的如此俊俏。”乔祁托腮望向X。</p><p>某阁主不为所动，戴上面具，起身道：“形势不明，小心为上。到明天就可以出去探一探了。”</p><p>他打开窗户飞身跃出。乔祁看着他在一套行云流水的操作后消失不见，好似只是融在凄寂微弱的蝉鸣声中了。</p><p>“等等——就我这垃圾身体怎么出去玩啊！”乔祁后知后觉，愤愤地哀嚎。</p>]]></content>
     
     
     <categories>
@@ -834,7 +889,7 @@
       
       <category>开心小说</category>
       
-      <category>（咕了的）恶渡</category>
+      <category>（咕了）恶渡</category>
       
     </categories>
     
@@ -852,11 +907,11 @@
   
   
   <entry>
-    <title>恶渡（三）：纸船啊纸船</title>
-    <link href="/2020/02/01/fiction/happy/EDu/EDu3/"/>
-    <url>/2020/02/01/fiction/happy/EDu/EDu3/</url>
+    <title>恶渡（一）：穿越者Z</title>
+    <link href="/2020/02/01/fiction/happy/EDu/EDu1/"/>
+    <url>/2020/02/01/fiction/happy/EDu/EDu1/</url>
     
-    <content type="html"><![CDATA[<p>1</p><p>翌日，昭行街。</p><p>日理万机的焚香阁阁主玄逸尘一早就把事全推给了属下，此刻正不紧不慢地混在熙攘的人群里四处闲逛。</p><p>天色有些阴沉，又偶尔裂开缝隙钻出光来，像街上起伏的叫卖声般让人捉摸不透规律。玄逸尘的目光略过街头吵嚷的摊子，落在青瓦屋檐下金灿灿的招牌与幡旗间。他眯眼看着不远处那家门庭冷落的古玩小店，慢慢悠悠地踱步上前。</p><p>2</p><p>店里的灰尘呛的玄逸尘一阵咳嗽，坐在台子后的女子抬头，有些讶然：“阁主？”</p><p>“嗯，就是那个每次来就一定会被呛咳嗽的人。”屋子前后的草帘全都半卷着，显得室内有些昏暗，他扫视了一圈，店里除他没有别的来客。</p><p>女子忍笑：“阁主来是有什么要事吩咐吗？”</p><p>“否，只是来打听近日京城之事。”</p><p>“成，倒也确有两件有意思的事。”她顿了一下，清清嗓子道，“第一件事与右相府有关。就在昨日傍晚，府里的人在我们昭行街街头挂出了一张榜，写着上联，让人对出下联，对出者有重赏。昨晚城里许多文人墨客都去右相府对下联了，但全是两手空空地出来，也不知这右相府到底打的什么算盘。”</p><p>“有把上联抄下来吗?”</p><p>“来，在这，这上联的字似乎都是自己造的，确实很是奇怪。”女子打开抽屉，翻出一张纸。</p><p>玄逸尘把叠着的纸打开，见上面只写了五个字：</p><p>氢 氦 锂 铍 硼</p><p>3</p><p>他默默把纸叠好，欲言又止，沉默了半晌后才开口：“说第二件事吧。”</p><p>女子见阁主神色古怪，也不多问，只继续讲：“第二件事与左相府有关。街坊都传着这事呢，不过我猜阁主大概会对这类贵公子的事不太感兴趣？就是左相府的少爷昨日……”</p><p>“左相府的少爷昨日去青楼没带够钱的事？”玄阁主稳稳地接话。</p><p>？原来阁主这么八卦的吗</p><p>“不过关于这件事，我今天刚得到一个消息，”她抬头看了眼门口，声音放低，“有人亲眼看到，其实那位少爷后来是被丐帮的人劫了，才满身是伤的倒在巷子里。”</p><p>玄逸尘挑眉，居然还有这么个内情。</p><p>“好，我知道了。”他起身，“你这有没有纸笔，可否借我一用？”</p><p>纸、笔、墨都被拿出来了。</p><p>玄逸尘草草地写下“碳氮氧氟氖”五字，随意折了折纸就要出门。</p><p>“这又是要做何？”身后的女子发问。</p><p>“去领重赏。”</p><p>4</p><p>右相府。</p><p>管家正领着玄逸尘往书斋去。因来对下联的人太多，便规定首字对出方可入内——于是直到玄逸尘来，还没有人对出第一个字。</p><p>玄阁主跟着管家在府里绕着，只觉这相府虽景致淡雅、布局自然，却透露着难以名状的逼仄感。Z那个家伙，可也是生活在这样的地方了啊。他想着，很轻地叹了口气。</p><p>“相爷，这位公子对出了第一个字。”管家进了书斋，对坐在桌前的那人恭敬地行礼。玄逸尘也正要规规矩矩地行礼，却被相爷止住了。</p><p>“你下去，我要和这位公子谈谈。”右相爷对管家一挥手，后者马上退了出去，并将房门掩好。</p><p>玄逸尘从袖子里取出写着下联的宣纸，递给江右相。他本以为对方一看到便会认得，却不料他打开抽屉，取出另一张宣纸，一个字一个字的对过。</p><p>玄逸尘皱了皱眉。他稍稍走近，看了眼另一张宣纸上的字——“氢氦锂铍硼，碳氮氧氟氖”，能辨得字形，却也说不上好看，再多看几眼，还是完全陌生的笔法。</p><p>江右相终于对完了字，他长舒一口气，突然起身对玄逸尘行礼。</p><p>玄逸尘暂时按下心头的疑虑，尽心尽力扮演起国家好子民的角色。只见他急忙扶起右相，道：“右相为何突然行此大礼？勿要折煞在下。”</p><p>“这礼我是一定要行的，只是有一事也只有公子能替我想想办法了。”</p><p>“请讲。”玄逸尘拱手。</p><p>“唉，”江右相先是叹了口气，“当今圣上迷恋一株千年古樟，已近发狂了。皇后都向程将军抱怨过多次，说圣上现在无事便会去往后花园，在那樟树旁呆上一宿。有一次竟差点赶不上早朝，那日的情景作为臣子我现在想起还是觉得荒唐至极，实在是有辱帝威，有辱帝威啊！”右相说到声音颤抖，不能自已，又自觉失态，便紧闭了嘴。</p><p>“请等在下片刻。”说着，玄逸尘闭上了眼睛。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs">《光兆帝传·尚妃》<br><br>光兆帝弘容竹幼年性好画，亦好草木，每至后园，坐即数时。帝见如此，欲与之草木为生辰礼，恰异国使献千年樟树于帝，仅数尺长，但云有树灵居之，诚罕见之神树也。遂与其子，栽于后园西北，缘即是始矣。<br><br>容竹甚惜，常亲手浇之。后学摹之法矣，日日摹樟树之形状于亭中。树灵感其意，虽不可言，然曳叶于风中，音如缠绵低语之情话，形如舞姿曼妙之少女。日光转叶隙，樟叶浮人影，一人一树，如此足矣。<br><br>时一日冬晨，容竹皇子坐亭习画，忽过狂风，恰两樟叶飘落画卷。笑而拾之，叶脉与手纹相触间，两心相悦。<br><br>惜世事无常，越七年，恒贵妃因病而辞，帝亦病矣。后独揽大权，后宫风云变化，非数语可尽者。容竹亦连，即出宫避，无与樟树别。<br><br>不见容竹，樟自憔悴，偶闻宫女传言，始知详略。欲随去，恐身位低贱，只怅然而叹。叶黄而陨，形容枯槁，若数日即死。<br><br>时一仙人云游而过，问之，树灵具告以事，并求肉身以伴容竹。仙人欲拒之，见树灵愀然，不忍。思片刻，遂许之二十八年肉身，时至则亡，无入轮回。树灵谢之，消于空中。<br><br>仙人摇头而叹曰：“皇子乃天上竹仙下凡，何需千年树灵之慕。然其命中所定之劫数，其奈我何？噫吁嚱，此实属不可结缘也！”遂乘云而去。<br><br>甲申年阳月，帝死，容竹回京登基，改号光兆，光兆传奇遂始也。<br></code></pre></td></tr></table></figure><p>这种鬼都不会信的神话情节都能记在史书里吗？？？玄逸尘睁开眼，暗暗摇头叹气，只快速计算了这位“树精”需要出现在皇上面前的时间，是光兆八年春，距今尚有几个月。</p><p>“相爷，今年乃光兆七年，若在下没有记错，明年季春会有秀女进宫？”</p><p>“没错，但……”</p><p>“无妨。你只需收买几个宫女躲在暗处，在樟树边记录皇上的一言一行，而后让一名女子熟背先前记录下的内容，假作是树灵转世，混在秀女里送入宫中即可。”</p><p>右相思索一阵，点点头：“此法可行，只是要到来年三月。”</p><p>“右相若欲将事做绝，大可早些毁了树，断其念想，也好让皇上早些专心朝政。若他实是苦痛不堪，到来年三月也将有‘树灵化身’的佳人抚之。”玄逸尘淡淡地陈述。</p><p>“此法甚妙，此法甚妙！”右相拍手称赞，“感谢公子的点拨，吾弟果真没有骗我。”</p><p>“敢问以此对联召我来的主意是谁出的？”玄逸尘觉得有些疲惫，他原想揉揉自己的眉心，又想起自己现在半边脸都被面具挡着，又放下了手。</p><p>“我原以为公子知道。那便请公子稍等，除了这个奇怪的造字对联，还有一件玩意。”右相先行了个大礼以示感谢，再从身侧的书匣里拿出一个白色方块。</p><p>玄逸尘瞳孔收缩，这是——“纸船”。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><p>他终于从一片似雾非雾的混乱间睁开眼，才模糊地意识到自己已经穿越了。</p><p>脑壳嗡嗡的疼，勉强抬起的头又因不堪其重而落下。远处一群人大叫大嚷着“少爷”的声音越来越近。他意欲从地上爬起，却双脚一软，栽了回去。他果断放弃，只努力把头往前伸了伸，视物却越发模糊，又被嘈杂不堪的声音越搅越乱。</p><p>在他来前这具身体的主人都干了些什么啊啊啊！他在心里破口大骂，终究撑不住，眼前一黑。</p><h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>他醒了。</p><p>他惊了。</p><p>他自是知道他要穿在一个贵公子身上。可考的史实资料显示，这位一开头就给他来了一段云里雾里剧情的贵公子在历史上并未留下什么详细信息，倒是他的家族在先代显赫尊贵，且在此朝的经历也将……颇有意思。</p><p>只是，可是，但是，为什么当他醒来后，会有这么一个漂亮姑娘站在他床边？</p><p>他睁着眼，张了张嘴。姑娘见他醒了，本想出门喊人，又见其张嘴，估摸他大约是要说什么，于是凑下身去。</p><p>“你美得让在下一颗心无从安放。”他从床上坐起，眯起了黑色的眼睛，嘴角带笑。</p><p>“嗷！！！好痛你快放开！！！”他被女子掐住了胳膊肉，只能徒劳地在床上扑腾。他本就刚从昏迷中醒来，身上哪都疼，膝盖又被草药包着，逐渐没了胡闹的力气，最终还是蔫下去了。</p><p>女子放开被她掐住的胳膊，冷哼一声，道：“林乔祁，我再不会信你的鬼话。只是，我倒要看看，你怎么对你父母交代今日的事。”</p><p>噫，“他”今天做了什么？他努力回想，却好像什么都想不起来。不对，按理来讲，他本该会有此人过往的记忆。他呆坐了几秒，目光从女子姣好的面庞一直飘忽到绣着碧竹图案的锦衾上，还是什么都想不起来。猛然间他抱住自己的脑袋，拳掌兼用地对自己的头又打又扇。</p><p>女子止住了他的手，嗤笑：“怎么，看到本郡君太美，悔不当初？”</p><p>林乔祁抬头，目光真挚：“‘俊眼修眉，顾盼神飞，文彩精华，见之忘俗’；郡君甚美，只是不知姓甚名谁？”</p><p>一阵沉默。</p><p>她打量了林乔祁一阵，声音冷下去了：“你最好不要给我开玩笑。”</p><p>“当真没有玩笑，我似乎，没有记忆了。”林乔祁小心翼翼地看着女子，停顿了一会，“所以这位就算失忆也能让我一见钟情二见倾心三见想定亲的女子是？”</p><p>女子严肃忧虑的脸挂不住了，欲笑非笑：“我是程浅。”</p><p>“郡君？”</p><p>“因我是棠央皇后的大哥——程天戎将军的女儿，故被封为郡君。”</p><p>啊，这二位他倒是知道了。不过……他看了程浅一眼，暂时按下不想。</p><p>“是不是想起什么了？”</p><p>乔祁干咳了一声，摇了摇头：“我是谁？”</p><p>他自是知道自己是谁，这个家族他该知道的不该知道的也都了解的七七八八了，此问不过是想搞清这人本来的德行和交游，顺便寻机调戏一下某郡君。</p><p>程浅似乎还没从乔祁失忆的事实中缓过来，愣了片刻才道：“林乔祁，你是当今左相林乔清的独子，乔贵妃之弟，宁振太子之舅。”</p><p>见林乔祁微微颔首，她便继续讲：“你平时不务正业，天天拈花惹草，四处留情。程家素与林家交好，我与你幼时便相识，这次你惹下祸来，我便是见你父母尚在别庄辟谷三日而未归，念你我旧情……”</p><p>“打住打住！那我们莫不是青梅竹马？我说这个漂亮妹妹怎么好像在哪儿见过，竟是失忆至此都无法忘怀。”他故意略过前面一连串的批判，只是忍笑着打趣。</p><p>程浅白眼一翻，正要发作，便听到敲门声响起。“进来吧。”说着她又瞅了眼林乔祁，只觉得这人哪怕记忆丧失回炉重造也改不了这吊儿郎当留恋花丛的脾性。</p><p>来人是伺候乔祁的丫鬟，神色有些紧张，进屋后先是神经质一般四处张望几下，才开口道：“郡君，相爷和夫人回来了。”她随后才看到林乔祁已经醒来，忙对他行礼，为难道：“少爷，相爷夫人已听闻此事，面上愠色颇盛……”</p><p>“行了，你先下去吧。”他对这个过分紧张的丫鬟微微一笑，摆手示意她离开。</p><p>听房门重新被关上，他一边伸手按了按被草药和纱布裹住的膝盖，一边用右手指着自己，满脸无辜：“所以我到底闯了什么祸？”</p><p>程郡君双手叠在胸前，只嫌弃地吐出几个字：“今早，鶏满楼。”</p>]]></content>
     
     
     <categories>
@@ -865,7 +920,7 @@
       
       <category>开心小说</category>
       
-      <category>（咕了的）恶渡</category>
+      <category>（咕了）恶渡</category>
       
     </categories>
     
@@ -918,7 +973,7 @@
     <link href="/2017/11/18/fiction/NotHappy/love/"/>
     <url>/2017/11/18/fiction/NotHappy/love/</url>
     
-    <content type="html"><![CDATA[<p>那块脏绿的破布在老旧惨淡的筒子楼间显得过分突兀。</p><p>它一动不动地躺在一片油漆斑驳的墙角下，任霉斑描绘着黑色的伤口，就像横死街头的豆蔻少女。</p><p>于是她放慢脚步，走近，轻轻地将米白色深口皮鞋的鞋尖踢向它。末了，她退后站定，抬头看了眼天空。七月的太阳烫人心肺，光裹着渐沸的蝉鸣如水汽般粘腻地贴在她的脸颊上，熟悉的夏日温度勾着颤抖的心升温，使她回想起与他度过的那些本会燥热不安的夏夜。她不禁带上了笑。</p><p>回头，她又重新转向那块死寂的破布，小心翼翼地用鞋将它从阴湿的墙角，一点一点扒拉到热切盛大的阳光底下。</p><p>她是来找他的。</p><p>顺着楼梯上了楼，她没急着去目的地，只是停在被阳光晒到滚烫的走廊里朝下望去。楼前不大的空地横七竖八地停满了车，她那不输任何一道阳光的灼热视线，此刻只落在他的车上，他的白色野马。</p><p>今日的阳光倒烫得正好，也一如那日白色野马的光芒刺眼。</p><p>只是，它不应挤在落满灰尘数尺的旧车间，它要停在金黄色的沙滩边，在夏季午后的骄阳下冷着眼，一如杀手般睥睨众生。而脸颊被阳光晒得通红的她，就像今天这样穿着大红的纱裙，踮着脚，独自在沙滩上起舞。这时，有人打开了车门，车窗反射的光像一道闪电般射中了她，一个叼着雪茄的男人从车里出来，慢慢地走向她。</p><p>夏日湿热恼人，皮肤相触着渗出薄汗，但她总是希望，他能把她搂住，搂的再紧一点，再久一点。</p><p>她遥遥地对楼下的白色野马抛去一个飞吻，回身去往他们曾经秘密约会的地点。她和他并未约好，只是她午后小憩时涌上了令人不安的烦闷，熟悉的号码拨出又挂断，从镂空窗帘上散落的光烙下点点夏日的痕迹，像他的吻一般落满全身。她一袭红衣盛装，只漫步而行，未曾想到能与他的白色野马邂逅。</p><p>她开了门， 室内一片昏黑。地上散落着衣物，从玄关一直延伸到里屋，她不由后退了一步。大门转轴发出绵长的摩擦声，又被那从卧室传出的调笑声掩埋，她又退后了一步，关上了门。</p><p>在一片混乱的蝉声中，她格外安静。</p><p>她又回到了她片刻前驻足的地方。从上望去，白色野马冷酷如同杀手，一如他骨节分明的手摘下黑色墨镜，投射来野兽般危险的目光。</p><p>她曾和那目光长久的相视。他冷漠的眸子像投入夏季燥热空气的冰块，她却迷醉于他烫人的唇，和他从方向盘滑落下的，搭在她腰间的炙热的手。</p><p>他就这样加速，持续加速，直到发动机的轰鸣声在她耳畔低吼，让她沉沦，让她疯狂。在晕眩的视线中，她感到他的眼眸正落向她，落向她正跳动不已的滚烫心脏。</p><p>她早已无法逃脱，她早已陷入了他那杀手般冰冷却又无比灼人的双眸，像一道闪电射中心脏，自她看到他的白色野马那天。</p><p>她捏着红色的纱裙，小心地沿楼梯而下，不远处，被拖出墙角的脏绿色破布，却再次被圈定在阴影的界限里。</p><p>Summer’s meant for loving and leaving</p><p>I was such a fool for believing that you</p><p>Could change all the ways you’re been living</p><p>But you just couldn’t stop</p><p>The day I saw your white mustang</p><p>Your white mustang</p><p>——  Lana Del Rey《White Mustang》</p>]]></content>
+    <content type="html"><![CDATA[<p>再一次看见它时，我没有惊讶，仿佛知道这是注定的。</p><p>也许就是注定的。</p><p>我喜欢在乘车时看大都市的繁华，衷于探索每天都不一样的色彩和情绪。因为这是它属于的地方，不是我。我总偷偷幻想着它在繁华中的模样，而现在，我看见了。我看见了它脸上浅浅的微笑，像它面前的玻璃高脚杯，反射着耀眼的灯光。</p><p>然而我只能看到这些，我只能从喷着黑色尾气的公交车上冲下来，装成无知的路人，从酒店没有拉上紫色窗帘的玻璃前走过。脚尖笔直向前，视线却晃悠悠地穿透玻璃和尘埃，黏在它的微笑上。</p><p>走完短短几米路程，我知道我应该回去了，但我还是驱使身体往反方向去。   我一直走到酒店大门。耀眼的装潢让我有些不知所措，我还是第一次离繁华这么近。门口站着两个人，白暂的脸上有掩饰不住的倦意。它们没有理我，我也没有进去的意思。我就站在金碧辉煌的角落里，孤独地给自己讲述我平凡的故事。</p><p>——</p><p>我来自农村，长相平平。但它们都说，我的耳朵不像农村的。它们说，这是一对不平凡的耳朵。但也许只是因为它们见识太少。我去城里上学后，从未有人在我脸上投下过多目光。我知道，这不过是城里常见的稍为秀气的耳朵罢了。</p><p>我不喜欢说话，从小就鲜有朋友。别人也许有对我表示过成为的朋友的意思，但我总是沉默了。我自始至终都抱着荒谬的信念。也许我寻求的不是朋友，而是唯一的什么东西，我称其为爱的东西。总之，一直以来，我都无奈地享受着孤独。</p><p>在城里的学校，我依旧孑然一身。这样反常的行为终究是被老师发现了。放学后我被叫到办公室，帮它改完抄写作业后，它让我找些朋友。</p><p>“你看起来太忧郁了。”老师这么说道。</p><p>也许这就是缺失了友情的后果，或许我真的需要重新改观。走出办公室时天已经黯淡了，回到教室，从窗口向下望，看不见骑着自行车吹着口哨的高年级学生，只能看见两旁的行道树摇摆得阴森。</p><p>我有些畏惧地从窗边退了一步，却撞了人。转头，看见的是一张陌生的面孔。</p><p>我赶紧道歉，它却摆了摆手，笑了“不用道歉，是我看的入迷了。”</p><p>有什么景色可以看入迷的，我将视线转向窗外。远处，阴惨惨的云正压向大地。我又转头，疑惑地看它。</p><p>它无视了我的目光，伸出了一只手“你好，我是你隔壁隔壁班的班长。”</p><p>我几乎是立即就把手伸了过去，它的手很冰，有刺骨的温度。</p><p>握完，它又笑了“你的耳朵很好看。”我第一次看见这样的眼神，不像盯着我的耳朵说它好看的农村人，不像只是看着我的眼睛拘谨地向我布置事务的同学。它看着我的眼睛，对我说“你的耳朵很好看。”</p><p>停顿了两秒，它说“你是城郊来的吧，我带你去吃城里的美食！”</p><p>我看着它的眼睛，看着它眼睛里黑色的天空，看着在它眼睛里缩成一团的我，我说“对不起，家人也许已经烧好饭了，而且可能要下雨……”</p><p>“那有空的时候要找我玩呐！”它有些遗憾地走出了教室，又突然想起什么似的弹了回来，冲我挥了挥手。“拜拜！”</p><p>我呆呆地看着教室的木板门，楼道里暗黄的灯光倾倒在门框上，悄无声息。呆立了片刻，我走回窗前，看着它骑着自行车，轻盈地随一阵晚风消失在马路的转角。</p><p>我突然长舒了一口气，灰色的白气笨拙地上升，渐渐淹没在空荡的教室里。我突然想对森然的行道树露出一个像它一样诚挚的笑脸，结果只是把脸上的肉拧成毫无规则的一团，透过玻璃窗冷漠的反射，我看见了自己丑陋的情感。</p><p>但我确实是在笑。</p><p>——</p><p>第二天依旧是平凡的一天，只是我发现我已经难以忍受孤独。脱离过它的人总是越陷越深，这也许就是世人总处于漩涡之中的缘由吧。</p><p>放学后没有老师再留我，也没有风景值得驻足。在四围的凄凉中，我出了教学楼，几个人嬉闹着跑过了我。篮球场上，体育特招生在急促地呼吸，化成水的气息像蛇一样纠缠着空气。</p><p>我拉了拉我的深棕色棉衣，感到自己像是从土里长出来的。</p><p>“嗨！楼下的等等我！”有人在呼喊。</p><p>抬头向上，是它。</p><p>是在对我吗？这一刻来临的时候，我居然惶恐了。搓了搓干燥的手，我停下了脚步。</p><p>它很快的下来了，没有厚重的喘气声，像一只轻快的鹿，跳跃着奔来。“你今天穿得真可爱，就是太不显眼啦，中午想找你吃饭的，但找到你的时候，你居然已经吃完了！”它吐了吐舌头，偷偷瞄我。</p><p>“对不起，下次…下次我会穿得明显一点的。”我想了想，认真地道歉。</p><p>“哈哈！衣服不重要，我下次肯定会找到你的。”它转头看我，笑得耀眼。</p><p>我不知道怎么接话，只看着它走向自行车亭。</p><p>它推着自行车出来了，我走过去，有点小紧张“我不太会说话，从来没有过朋友。很奇怪吧！我竟然会不希望有个朋友。你是第一个，让我感觉像是朋友，又不像是朋友的安心的人。”</p><p>它把推出的自行车靠在墙上，抿了抿嘴“不奇怪。对我而言，你也是第一个，或许也是唯一一个。”</p><p>我们突然就陷入了沉默。原来这就是它和朋友的不同吗？我想起昨天它的笑，让我想看见它全部的丑陋与美好。</p><p>多么卑微而神圣的愿想。</p><p>晚风肆意地吹起。它终于释放般的扬起了嘴角，对我说：“今天总有空了吧，带你去市中心逛！”它又把推出的自行车推了回去，指了指公交站台。</p><p>风停了，树叶不再张牙舞爪。</p><p>——</p><p>此后它经常带我出去玩。可在都市最繁华的街市里，我却落荒而逃了。那时候它吃着五角钱的年糕，靠着它的自行车，和我讨论起城市农村橡皮擦圆珠笔和老师的衣服。</p><p>我们的声音和街市里不同口音的普通话混在一起，拧成一股粗大的麻绳，把街市层层捆缚。而在这街市之中，唯有我感受到了这令人窒息的束缚。</p><p>我感到恐惧，不仅是对繁华，还是对它。这无名的情绪使我越来越小，直到成为一个小点，仰望着身边的它。它说了什么，我听不清，我回答了什么，我听不清。我真切地知道我逃走了。</p><p>而它突然凑近，在我耳边说：“我说的是，你也买辆自行车吧，以后去山上看风景。”我突然又由那个小点急速扩展为一个正常的我。</p><p>原来它知道啊，那我已经没有恐惧的必要了。</p><p>我看向它的眼睛，出乎意料地，我看到它的眼角滑过了一丝哀求，宛如空气中的游丝，在光影中堪堪闪动了一下，就消失不见了。</p><p>原来我们都藏着自己的恐惧，像藏着丑陋的恶魔。</p><p>“刚刚发呆了，闹市还真是不适合我呢，去山上倒是很好的选择。”我试着将嘴角弯起一个很小的角度。“刚才那一瞬，我突然产生了一种像是被你拯救了的感觉。”我傻笑了一下，说。</p><p>“我们之间大概是相互拯救的吧。”它扔掉了装年糕的袋子，我看不见它脸上的表情。但它转过头来时，已经笑了“还有，你下次不要笑得这么勉强。”</p><p>它跨坐在了自行车上，我坐也挤上了喧嚷的公交车。我一遍遍回想它的话，回想它的笑，其中有多少是勉强的呢？</p><p>冲破无形的麻绳，我从繁华中落荒而逃。而在四周一片黑色的寂静中，我们谁都不会回想起年糕的味道。</p><p>我和它再也没有去过闹市，却天天往山上钻。都市和山都吸引着我，但都市太过沉重的压迫，让我承受无力。而山，恰是一种慰藉。</p><p>那天它站在小山的秃岩上，问我“想知道我现在对你而言是什么，朋友？”它把手向上高高举起，风扬起它的衣角，它张开手，像是要把风抓在手里。</p><p>“我从未把你定义为朋友。”我摘了一条长长的草叶，把它围成一个圈。</p><p>“那我被定义成什么？”</p><p>“大概是世界上所有朋友的集合再加上一层厚厚的调料。”我一边半开笑地说，一边在圈上扎了个小小的蝴蝶结。</p><p>“那大概会是最名贵的一道菜了。”它从秃岩上跳了下来，把手插回口袋，像是把风都私藏了起来。</p><p>“嗯…这话有误，不能说贵，很难吃的也说不定，但肯定独一无二。”我随性地回答。看它走过来，我从草地上站了起来，感到裤子湿漉漉的，会不会是草的眼泪呢？</p><p>我掐灭了我无意义的想象，把手中用草编的环递给它。</p><p>“你是在夸我还是在批判我？”它先是对我的上述言论做出表态，随后，它接过草环，认真看了看。“做得真好，是戒指吗？”它笑了。</p><p>我也笑了。风吹了个音调奇异的呼哨，把我们的笑都带给了这座山。</p><p>它把草环揣进口袋，和我并排站着，阳光在它脸上削出柔和的阴影。它伸手捏住一只趴在它衣服上的甲虫，问我：“你是不是很爱惜虫子啊？”</p><p>“我小时候最好的玩伴。”</p><p>“那我以后也不打虫子了。”它说得很认真。</p><p>“你没有必要勉强自己，我不会把我的观念强塞给你。”我侧目看它。</p><p>它蹲下身，把那只甲虫放在草地上。“我觉得我应该适应你的那些对我而言是缺点的东西。”它站了起来“我们之间有的不只是那些肤浅的感情了吧。”</p><p>“一直就高于它们。”我纠正。</p><p>它又笑了，笑得很开心，笑得像个从未笑的人。</p><p>“你有没有觉得这座城市很像你？”我问它。</p><p>“也许吧，出身注定了我长于繁华。”它看向我“我从来没和城市做过对比，但我知道，我和这座城一样都有一个中心。你知道吗？这座山才是这座城的中心。繁华的灵魂原本是孤独的，但当孤独与孤独一起时，那就是充实的。”</p><p>我不太懂，却感到什么东西触碰了我。这是我一直想问的问题，但我从未想过它会这样回答。它对这座城是何等的了解，它清楚地知道每个繁华区的分布，它可以自如地辗转于各个街道，它能够笑着与所有人打招呼。像这座城一样，认识一切，接纳一切，却隐含着孤独的内心。</p><p>我低着头想着，它走到我面前，我看到它的红色旧布鞋上有小草哭过的泪痕。“我可能说了奇怪的话。”它顿住了，我便抬头看它。它却在这一瞬突然抱住了我，“这样可能会好些吧。”</p><p>当被它双手合抱时我有些手足无措，但当我看到它身后，那隐藏在霞光之中的无边高楼和草地时，我发现我不应该感到惊讶。因为它是像城市那样环抱着一个小小的山丘。而小小的山丘又用它的草地环抱了一个孤独的人，而这个孤独的人，又用它的双手拥抱了它的灵魂。</p><p>是它们和我们一起，构筑了这个孤独又繁华的世界。</p><p>——</p><p>很久很久后的一天，它向我表白了，在山上的小水库边。水库的水泛着肮脏的绿色，却挡不住它眼里的澄澈。我学着它的样子，做出和它一样的行为。</p><p>所谓表白，究竟在“爱”的表达中，起了什么作用？表白是将爱由心通过声音传播到空气中，再由空气传播给它的耳朵。在这一漫长的过程中，嘴巴、空气、耳朵都是冷漠而无动于衷的。也许根本就不需要让它们知道。不管是卑微的愿想也好，烦人的缺点也好，深处的孤独也好，表面的繁华也好，一切的一切，早已深入对方与自己的骨髓。像把利剑，又像杯水，永远也无法挣开。</p><p>我们知道，但我们并不设法逃走，这才是爱的结果，这才是爱的原因，与外界的物质无关。</p><p>还有一件小事，发生在那天从水库边往回走的时候。我们经过水库管理员的小木屋时，听见了里面传出的奇怪声音。它与乌鸦嘶哑的哭声混杂一起，显得格外诡异。我终于知道了这是什么。很奇怪的是，在这样一种尴尬的气氛中，我感到了一种近乎荒谬的神圣。</p><p>它和我一样突然就沉默了。</p><p>我知道我们要等到很多年后才会知道这件事的意义。但在这样的一个时刻，在这样一个简单却总无法被人看得透彻的人类行为前，我们牵着手，却终究是惶恐的。</p><p>——</p><p>后来，我们毕业了。在一家咖啡馆与它碰面时，它显得有些颓唐。它喝的是咖啡，我不知道点什么，便随意要了一杯冰柠檬水。</p><p>“我要去很远的地方读书。”</p><p>“好。”</p><p>“也许要很久。”</p><p>“好。”</p><p>“会回来的。”</p><p>“好。”</p><p>“你是在生气？”</p><p>“不，是在相信。”</p><p>简短的对话后，谁都没再说话。盛有柠檬水的玻璃杯上逐渐凝出了很小的水珠，像是某种痛苦的分泌物。</p><p>我伸手擦去了它们。</p><p>“不要联系了吧，直到找到对方为止。”我第一次做出如此清晰的决定，像是死亡通知书，又像是出生证明。</p><p>我笑了，它也笑了。</p><p>“你笑得像这杯咖啡一样苦。”</p><p>“你笑得比这杯柠檬水还要涩。”</p><p>“你一口都没喝。”</p><p>“但我知道，这与柠檬水无关。”我说。</p><p>它走了，我一直留在城里。</p><p>就这样不知道过了几年，还是平凡得一无是处的我，可笑地站在酒店门口，回想我平凡的生活。我抬头看了看天，今天的天空白得明亮，像铺满了一层雪，从未想过，从大地落往天空的雪，竟然也能白得这样纯净。</p><p>有人推开了酒店的大门。身后传来了转轴摩擦的声音，但我没有转头。</p><p>“你走得太快了，差点就要走出我的视线。”那个人说。</p><p>“那看来我还是走慢了。”我说。</p><p>我转过了头，毫无意外是它的面孔。</p><p>“欢迎回来。”我笑道。</p><p>它抱住了我“笑得很丑，但很可爱。”</p><p>它又补充说，“也欢迎你回来。”</p><p>相互寻找的过程是何等漫长，我们都在改变，都会迷失自己。但千万个孑然一人的时刻后，我们还是会发现，对的人永远在对的方向，我们知道我们一定会找到彼此。</p><p>这或许就是爱吧。</p>]]></content>
     
     
     <categories>
@@ -935,8 +990,6 @@
       <tag>小说</tag>
       
       <tag>不太开心小说</tag>
-      
-      <tag>Lana Del Rey</tag>
       
     </tags>
     
