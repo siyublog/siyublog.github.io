@@ -5,28 +5,22 @@
   
   <entry>
     <title>学习用Github搭建个人博客的流程记录</title>
-    <link href="/2023/11/05/blog/setblog/"/>
-    <url>/2023/11/05/blog/setblog/</url>
+    <link href="/2023/11/05/workflow/workflow_LearnToStartABlog/"/>
+    <url>/2023/11/05/workflow/workflow_LearnToStartABlog/</url>
     
     <content type="html"><![CDATA[<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="1、安装git"><a href="#1、安装git" class="headerlink" title="1、安装git"></a>1、安装git</h4><p>下载网址：git-scm.com</p><p>完成后鼠标右键可见Git Bash Here. 点击打开后，测试是否安装成功：</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git <span class="hljs-comment">--version</span><br></code></pre></td></tr></table></figure><h4 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h4><p>下载网址：nodejs.org&#x2F;en&#x2F;download&#x2F;</p><p>测试是否安装成功：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git -v</span><br></code></pre></td></tr></table></figure><h4 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h4><p>安装：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> hexo -g<br></code></pre></td></tr></table></figure><p>测试是否安装成功：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo -v</span><br></code></pre></td></tr></table></figure><h4 id="4、安装Hexo依赖"><a href="#4、安装Hexo依赖" class="headerlink" title="4、安装Hexo依赖"></a>4、安装Hexo依赖</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-deployer-git</span><br></code></pre></td></tr></table></figure><h4 id="5、配置SSH-key"><a href="#5、配置SSH-key" class="headerlink" title="5、配置SSH key"></a>5、配置SSH key</h4><p>生成ssh key：</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;github账号绑定的邮件地址&quot;</span><br></code></pre></td></tr></table></figure><p>在电脑用户文件夹下可以看到生成.ssh文件夹。在.ssh文件夹下，复制id_rsa.pub文件里的所有内容。</p><p>打开github主页，在settings中选择SSH and GPG keys，点击右侧New SSH key，将复制内容粘贴，取好Title后add SSH key.</p><p>测试是否成功：</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@github</span>.com<br></code></pre></td></tr></table></figure><p>配置用户名和邮箱：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;github用户名&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;github注册邮箱&quot;</span><br></code></pre></td></tr></table></figure><h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><h4 id="1、初始框架"><a href="#1、初始框架" class="headerlink" title="1、初始框架"></a>1、初始框架</h4><p>hexo基本命令：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span> <span class="hljs-meta">#新建网站</span><br>hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;title&quot;</span> <span class="hljs-meta">#新建文章</span><br>hexo <span class="hljs-keyword">new</span> page <span class="hljs-string">&quot;pagename&quot;</span> <span class="hljs-meta">#新建页面</span><br>hexo g<br>hexo generate <span class="hljs-meta">#生成静态文件至public目录</span><br>hexo s<br>hexo sever <span class="hljs-meta">#预览</span><br>hexo d<br>hexo deploy <span class="hljs-meta">#将网站部署到github</span><br>hexo clean <span class="hljs-meta">#清除缓存和已生成的静态文件（public）</span><br></code></pre></td></tr></table></figure><p>在本地保存博客的目录，进入Git命令，输入：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure><p>目录会出现多个文件和文件夹。</p><p>_config.yml：为网站的配置信息，在此配置网站的参数。</p><p>scaffolds：为模板文件夹。当新建文章时，Hexo会根据 scaffold来创建文件。</p><p>source：存放用户资源的文件夹。</p><p>themes：主题文件夹，Hexo根据主题生成静态页面。</p><p>生成静态网页：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure><p>预览：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure><h4 id="2、将网站部署到github"><a href="#2、将网站部署到github" class="headerlink" title="2、将网站部署到github"></a>2、将网站部署到github</h4><p>在github上点击新建：new repository</p><p>仓库名称：用户名.github.io</p><p>选中 Add a README file，点击 Create repository</p><p>编辑本地目录中的_config.yml：</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repository:</span> git@github.com: username/username.github.io<br><span class="hljs-symbol">  branch:</span> main<br></code></pre></td></tr></table></figure><p>branch需要看自己的github repository是master还是main.</p><p>在git中命令部署：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure><p>访问自己的网站：username.github.io</p><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p><p><a href="https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169">https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169</a></p>]]></content>
     
     
     <categories>
       
-      <category>1</category>
-      
-      <category>2</category>
-      
-      <category>11</category>
+      <category>记录、教程与分享</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>教程</tag>
-      
-      <tag>编程</tag>
+      <tag>姑且算编程</tag>
       
     </tags>
     
@@ -42,6 +36,60 @@
     <content type="html"><![CDATA[<center><div class="bili_video"><iframe src="https://player.bilibili.com/player.html?aid=657240666&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="310" height="200" allowfullscreen="true"> </iframe></div></center>]]></content>
     
     
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>任天堂入门——账号与会员</title>
+    <link href="/2023/04/10/game/game_nintendo_account/"/>
+    <url>/2023/04/10/game/game_nintendo_account/</url>
+    
+    <content type="html"><![CDATA[<p><strong>一、账号（所谓的Nintendo Account）的作用：</strong></p><p>  <strong>1、购买电子版游戏、DLC</strong></p><p>  <strong>2、购买会员（Nintendo Switch Online 会员）</strong></p><p>​    ①提供线上存档服务</p><p>​    <strong>②提供联机服务</strong></p><p>​    ③会员专属游戏</p><p>​    ④<strong>任亏券</strong>：为面向会员的优惠券，购买一次有两张，每张可以兑换一款游戏，比如我的splatoon3 就是用任亏券兑换的，可兑换游戏具体可见：<a href="https://zhuanlan.zhihu.com/p/504405263%EF%BC%9B%E6%B3%A8%E6%84%8F%E8%BF%99%E4%B8%AA%E5%88%97%E8%A1%A8%E6%98%AF%E9%9A%8F%E7%9D%80%E4%B8%80%E4%BA%9B%E6%96%B0%E6%B8%B8%E6%88%8F%E5%8F%91%E5%94%AE%E5%9C%A8%E9%80%90%E6%B8%90%E5%A2%9E%E5%8A%A0%E7%9A%84%EF%BC%8C%E8%AF%B7%E8%BF%98%E6%98%AF%E4%BB%A5%E8%80%81%E4%BB%BB%E5%AE%98%E6%96%B9%E4%B8%BA%E5%87%86%E3%80%82">https://zhuanlan.zhihu.com/p/504405263；注意这个列表是随着一些新游戏发售在逐渐增加的，请还是以老任官方为准。</a></p><p><strong>二、创建账号中比较关键的点：</strong></p><p>国家&#x2F;地区的选择决定了账号的区服，区服直接与eshop（线上买游戏的价格、支付手段）和Nintendo Switch Online 会员有关。</p><p>总共四个区服：港区、日区、美区、欧区。</p><p>  港区：中国香港</p><p>  日区：日本</p><p>  美区：美国、加拿大、墨西哥</p><p>  欧区：澳大利亚、英国、捷克、新西兰、瑞典、欧盟、俄罗斯、瑞典、挪威、南非、波兰、捷克、丹麦、瑞士等等</p><p>也可建立多个账号，每个账号对应机器上的一个用户，分别选择不同的国家&#x2F;地区。</p><p>建好的账号也可以更换国家&#x2F;地区，但是跟随的点卡、金币等将会全部清空。</p><p><strong>游戏价格查询：</strong>可以下载名为“Jump”的app，可见每个区服对应的游戏价格及推送打折信息。</p><p><strong>支付手段：</strong>也可在上面的app中看到，大部分支持点卡，点卡我没试过，但是也找到了篇流程介绍 <a href="https://zhuanlan.zhihu.com/p/354423221%EF%BC%9B%E6%AD%A4%E5%A4%96%EF%BC%8C%E6%97%A5%E5%8C%BA%E6%94%AF%E6%8C%81%E5%A4%A7%E9%99%86paypal%EF%BC%8C%E6%B8%AF%E5%8C%BA%E6%94%AF%E6%8C%81%E6%94%AF%E4%BB%98%E5%AE%9D%EF%BC%8C%E9%83%BD%E6%98%AF%E6%AF%94%E8%BE%83%E6%96%B9%E4%BE%BF%E6%94%AF%E4%BB%98%E7%9A%84%E5%8C%BA%E6%9C%8D%E3%80%82">https://zhuanlan.zhihu.com/p/354423221；此外，日区支持大陆paypal，港区支持支付宝，都是比较方便支付的区服。</a></p><p><strong>三、在PC网页端创建账号以及关联到机器上的用户：</strong></p><p>  创建网址：<a href="https://accounts.nintendo.com/">https://accounts.nintendo.com/</a></p><p>  可参考的具体流程：<a href="https://zhuanlan.zhihu.com/p/354280981">https://zhuanlan.zhihu.com/p/354280981</a></p><p><strong>四、Nintendo Switch Online 会员：</strong></p><p>Nintendo Switch Online会员分个人会员与家庭会员两种，个人会员可选 1、3、12 个月订阅，家庭会员一次订阅 12 个月。</p><p>港区购买网址：<a href="https://ec.nintendo.com/HK/zh/membership">https://ec.nintendo.com/HK/zh/membership</a></p><p>日区购买网址：<a href="https://ec.nintendo.com/JP/ja/membership">https://ec.nintendo.com/JP/ja/membership</a></p><p>有钱可以自己订个人会员，像我一样穷就找人拼车家庭会员，家庭会员最多八人，合起来支付个两三百元一年，淘宝、jump都可以提供这种拼车服务，我当时是在98里和人拼车，买的日区家庭会员，因为日元汇率暴跌，一人一年只需要二十几元。</p><p>关于会员更详细的介绍可见：<a href="https://zhuanlan.zhihu.com/p/45011246">https://zhuanlan.zhihu.com/p/45011246</a></p><p><strong>五、最后一步就是加速器：</strong></p><p>加速器我也不好说哪个好用，实际上这一套下来最贵的反而是加速器，个人用的uu加速器。实际上splatoon3联网就是很容易让人高血压，错的不是我们是这个任天堂。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>游戏</category>
+      
+      <category>nintendo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>游戏</tag>
+      
+      <tag>nintendo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Typora初试体验与分享</title>
+    <link href="/2020/05/29/workflow/workflow_Typora/"/>
+    <url>/2020/05/29/workflow/workflow_Typora/</url>
+    
+    <content type="html"><![CDATA[<p>非常简洁的界面（宛如txt），我以为很麻烦但其实一点也不的markdown语法。</p><p>今天听过讲座后尝试性地使用了Typora，一方面部分语法不常用，怕自己忘了语法记录一下，于是同时截图了正常模式与源代码模式，同时也是做个分享。</p><p><img src="/img/post/workflow_Typora/1.jpg"></p><p><img src="/img/post/workflow_Typora/2.jpg"></p><p><img src="/img/post/workflow_Typora/3.jpg"></p><p><img src="/img/post/workflow_Typora/4.jpg"></p><p><img src="/img/post/workflow_Typora/5.jpg"></p><p><img src="/img/post/workflow_Typora/6.jpg"></p><p><img src="/img/post/workflow_Typora/7.jpg"></p><p><img src="/img/post/workflow_Typora/8.jpg"></p><p><img src="/img/post/workflow_Typora/9.jpg"></p><p><img src="/img/post/workflow_Typora/10.jpg"></p><p><img src="/img/post/workflow_Typora/11.jpg"></p><p><img src="/img/post/workflow_Typora/12.jpg"></p><p><img src="/img/post/workflow_Typora/13.jpg"></p><p><img src="/img/post/workflow_Typora/14.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>记录、教程与分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>姑且算编程</tag>
+      
+    </tags>
     
   </entry>
   
