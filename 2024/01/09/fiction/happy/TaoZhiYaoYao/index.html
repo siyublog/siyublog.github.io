@@ -16,22 +16,24 @@
   <meta name="author" content="Siyu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="从入门到入土">
+    <meta name="description" content="春日什么时候会来？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Github建立个人博客的流程记录">
-<meta property="og:url" content="https://siyublog.github.io/2023/11/05/sharing/workflow/ToStartABlog/index.html">
+<meta property="og:title" content="桃之夭夭">
+<meta property="og:url" content="https://siyublog.github.io/2024/01/09/fiction/happy/TaoZhiYaoYao/index.html">
 <meta property="og:site_name" content="Siyu Blog">
-<meta property="og:description" content="从入门到入土">
+<meta property="og:description" content="春日什么时候会来？">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-06T04:10:00.000Z">
-<meta property="article:modified_time" content="2023-12-30T05:20:26.774Z">
+<meta property="article:published_time" content="2024-01-09T06:20:00.000Z">
+<meta property="article:modified_time" content="2024-01-09T06:26:14.014Z">
 <meta property="article:author" content="Siyu">
-<meta property="article:tag" content="姑且算编程">
+<meta property="article:tag" content="小说">
+<meta property="article:tag" content="开心小说">
+<meta property="article:tag" content="和三叶虫一个时代的光兆传奇">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>用Github建立个人博客的流程记录 - Siyu Blog</title>
+  <title>桃之夭夭 - Siyu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -253,7 +255,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="用Github建立个人博客的流程记录"></span>
+            <span id="subtitle" data-typed-text="桃之夭夭"></span>
           
         </div>
 
@@ -264,8 +266,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-05 23:10" pubdate>
-          2023年11月5日 晚上
+        <time datetime="2024-01-09 01:20" pubdate>
+          2024年1月9日 凌晨
         </time>
       </span>
     
@@ -276,7 +278,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          904 字
         
       </span>
     
@@ -287,7 +289,7 @@
         
         
         
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -324,73 +326,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">用Github建立个人博客的流程记录</h1>
+            <h1 id="seo-header">桃之夭夭</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="1、安装git"><a href="#1、安装git" class="headerlink" title="1、安装git"></a>1、安装git</h4><p>下载网址：git-scm.com</p>
-<p>完成后鼠标右键可见Git Bash Here. 点击打开后，测试是否安装成功：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git <span class="hljs-comment">--version</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h4><p>下载网址：nodejs.org&#x2F;en&#x2F;download&#x2F;</p>
-<p>测试是否安装成功：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git -v</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h4><p>安装：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> hexo -g<br></code></pre></td></tr></table></figure>
-
-<p>测试是否安装成功：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo -v</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="4、安装Hexo依赖"><a href="#4、安装Hexo依赖" class="headerlink" title="4、安装Hexo依赖"></a>4、安装Hexo依赖</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-deployer-git</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="5、配置SSH-key"><a href="#5、配置SSH-key" class="headerlink" title="5、配置SSH key"></a>5、配置SSH key</h4><p>生成ssh key：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;github账号绑定的邮件地址&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>在电脑用户文件夹下可以看到生成.ssh文件夹。在.ssh文件夹下，复制id_rsa.pub文件里的所有内容。</p>
-<p>打开github主页，在settings中选择SSH and GPG keys，点击右侧New SSH key，将复制内容粘贴，取好Title后add SSH key.</p>
-<p>测试是否成功：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> -T git<span class="hljs-variable">@github</span>.com<br></code></pre></td></tr></table></figure>
-
-<p>配置用户名和邮箱：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;github用户名&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;github注册邮箱&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><h4 id="1、初始框架"><a href="#1、初始框架" class="headerlink" title="1、初始框架"></a>1、初始框架</h4><p>hexo基本命令：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span> <span class="hljs-meta">#新建网站</span><br>hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;title&quot;</span> <span class="hljs-meta">#新建文章</span><br>hexo <span class="hljs-keyword">new</span> page <span class="hljs-string">&quot;pagename&quot;</span> <span class="hljs-meta">#新建页面</span><br>hexo g<br>hexo generate <span class="hljs-meta">#生成静态文件至public目录</span><br>hexo s<br>hexo sever <span class="hljs-meta">#预览</span><br>hexo d<br>hexo deploy <span class="hljs-meta">#将网站部署到github</span><br>hexo clean <span class="hljs-meta">#清除缓存和已生成的静态文件（public）</span><br></code></pre></td></tr></table></figure>
-
-<p>在本地保存博客的目录，进入Git命令，输入：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure>
-
-<p>目录会出现多个文件和文件夹。</p>
-<p>_config.yml：为网站的配置信息，在此配置网站的参数。</p>
-<p>scaffolds：为模板文件夹。当新建文章时，Hexo会根据 scaffold来创建文件。</p>
-<p>source：存放用户资源的文件夹。</p>
-<p>themes：主题文件夹，Hexo根据主题生成静态页面。</p>
-<p>生成静态网页：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure>
-
-<p>预览：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="2、将网站部署到github"><a href="#2、将网站部署到github" class="headerlink" title="2、将网站部署到github"></a>2、将网站部署到github</h4><p>在github上点击新建：new repository</p>
-<p>仓库名称：用户名.github.io</p>
-<p>选中 Add a README file，点击 Create repository.</p>
-<p>编辑本地目录中的_config.yml:</p>
-<p>type: git</p>
-<p>repository: <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#111;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#111;&#x6d;</a>: username&#x2F;username.github.io</p>
-<p>branch: main</p>
-<p>（branch需要看自己的github repository是master还是main.）</p>
-<p>在git中命令部署：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>
-
-<p>访问自己的网站：username.github.io</p>
-<h3 id="主题与内容"><a href="#主题与内容" class="headerlink" title="主题与内容"></a>主题与内容</h3><p>接下来就是寻找适合自己的网站主题：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
-<p>支持中文、持续更新的主题往往使用起来更加趁手。</p>
-<p>我们同样可以在这个网站上寻找合适的插件：<a target="_blank" rel="noopener" href="https://hexo.io/plugins/">https://hexo.io/plugins/</a></p>
-<p>对我而言有用的插件包括嵌入视频网站视频，嵌入音乐播放器等。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169">https://zhuanlan.zhihu.com/p/392994381?utm_psn=1704689009681543169</a></p>
+                <p>【未完成的小短篇，很久没写了，写着玩儿，开心是第一位的】</p>
+<h4 id="一"><a href="#一" class="headerlink" title="一"></a>一</h4><p>这是花河镇春前最后一场雪了。</p>
+<p>落雪后的第二日，天晴日暖，雪融在青灰色石板上，反射出粲然的日光。扎着冲天小辫的孩童嬉笑跑过，几脚踩碎了倒影，自己却也跌了个大跤。那孩童一跤摔得敦实，睁眼又是刺目光线，正止不住欲哭，却看见一年轻女子向她俯下身子，正好挡住了太阳，道：“地上湿冷，我扶你起来。“</p>
+<p>被扶起的小孩后背一片濡湿，小辫上还挂着未消的雪，此刻只眨巴着眼，望向女子。”天气尚寒，先回家换身衣裳吧。“她见女童还停在原地，想了想，将自己的素青色披风掀起一角，笑道：”想躲进来吗？你给我带路吧，我送你回去。“</p>
+<p>女童家就在不远处的茶馆，茶馆前是一条宽阔的水道，两侧未抽新芽的柳树垂落了光秃的枝条，在微风中轻轻晃动。经营茶馆的掌柜将女童送进里间，出来后给女子倒满了热茶。她呼着热气，与面前悄然淌过的河流对饮，须臾后发问：”此河可有名？“</p>
+<p>”姑娘是第一次来此吧，这便是花河了。“</p>
+<p>”河边并未有花草，为何叫花河？“</p>
+<p>”花河上游不远有一桃村，据传有万株桃树。一到春日，桃花盛开，花瓣被吹入水中，满河尽是桃花，可不就是花河了。“</p>
+<p>”桃花……“女子垂下眼帘，轻轻低喃。她将最后一口茶饮尽，向花河上游层叠起伏的山陵间望去。</p>
+<p>”尚未问过，姑娘怎么称呼？从何处来的？“</p>
+<p>”小女子姓乔名禾，自……自高墙中出，为寻桃花而来。“她轻轻笑了笑，眼中似有亮色，”请问往长汀县要怎么走？“</p>
+<hr>
+<h4 id="小番外《桃花债》"><a href="#小番外《桃花债》" class="headerlink" title="小番外《桃花债》"></a>小番外《桃花债》</h4><p>”去那边的茶馆坐坐？好像正好对着花河……等等，我们还是先去逛夜市吧。“春姝从发间取下桃花，在灯火间笑着地冲乔禾扬了扬手。</p>
+<p>等她走近，春姝又悄声道：”可我没银两了。“</p>
+<p>她挽上乔禾的手，又隔着披风捏到了乔禾的荷包，那意思就是要耍赖。</p>
+<p>乔禾怀疑地捏了捏她的手：”真的吗？“</p>
+<p>”这不是昨日太欢喜了，给村里的孩子们当迟来的压岁钱分了……就借我一点点，买个糖葫芦，我诚实守信绝不赖账。“</p>
+<p>乔禾看着身侧人假装卖乖，嘴角也挂上了笑，轻轻地说：”那把你抵给我，你便是想还我也不让你还了。“</p>
+<p>“我便偏要还？”春姝扬了扬眉，见乔禾想说什么，用食指止住了她的话头。</p>
+<p>“我要用这个还。”她把那朵桃花别在乔禾的发间。</p>
+<p>“以此生每年的桃花还你，如何？”</p>
 <link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
               </div>
@@ -409,12 +370,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AE%B0%E5%BD%95%E4%B8%8E%E5%88%86%E4%BA%AB/" class="category-chain-item">记录与分享</a>
+  <a href="/categories/%E5%B0%8F%E8%AF%B4/" class="category-chain-item">小说</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E8%AE%B0%E5%BD%95%E4%B8%8E%E5%88%86%E4%BA%AB/%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/" class="category-chain-item">流程记录</a>
+  <a href="/categories/%E5%B0%8F%E8%AF%B4/%E5%BC%80%E5%BF%83%E5%B0%8F%E8%AF%B4/" class="category-chain-item">开心小说</a>
   
   
 
@@ -431,7 +392,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A7%91%E4%B8%94%E7%AE%97%E7%BC%96%E7%A8%8B/" class="print-no-link">#姑且算编程</a>
+        <a href="/tags/%E5%B0%8F%E8%AF%B4/" class="print-no-link">#小说</a>
+      
+        <a href="/tags/%E5%BC%80%E5%BF%83%E5%B0%8F%E8%AF%B4/" class="print-no-link">#开心小说</a>
+      
+        <a href="/tags/%E5%92%8C%E4%B8%89%E5%8F%B6%E8%99%AB%E4%B8%80%E4%B8%AA%E6%97%B6%E4%BB%A3%E7%9A%84%E5%85%89%E5%85%86%E4%BC%A0%E5%A5%87/" class="print-no-link">#和三叶虫一个时代的光兆传奇</a>
       
     </div>
   
@@ -443,8 +408,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>用Github建立个人博客的流程记录</div>
-      <div>https://siyublog.github.io/2023/11/05/sharing/workflow/ToStartABlog/</div>
+      <div>桃之夭夭</div>
+      <div>https://siyublog.github.io/2024/01/09/fiction/happy/TaoZhiYaoYao/</div>
     </div>
     <div class="license-meta">
       
@@ -456,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月5日</div>
+          <div>2024年1月9日</div>
         </div>
       
       
@@ -500,18 +465,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/12/annual/2023/2023music/" title="2023年度听歌记录">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年度听歌记录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/31/game/switch/AnimalCrossing/AnimalCrossing2/" title="【动物森友会】杂七杂八">
-                        <span class="hidden-mobile">【动物森友会】杂七杂八</span>
+                      <a href="/2024/01/05/sharing/trans/pitchfork_hounds/" title="Pitchfork评论：Hounds of Love">
+                        <span class="hidden-mobile">Pitchfork评论：Hounds of Love</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
